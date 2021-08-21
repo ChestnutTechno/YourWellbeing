@@ -74,6 +74,7 @@ banner
 
 .navbar-brand
 {
+	text-align: center;
 	font-family: 'Chewy', cursive;
 	font-size: 32px;
 }
@@ -160,11 +161,12 @@ banner
 
 .overlay-detail a i {
     text-align: center;
-    position: absolute;
+    position: center;
+	margin-top: 240px;
     bottom: 25px;
-    font-size: 38px;
+    font-size: 100px;
     color: #fff;
-    margin: 0 auto;
+
 }
 .text-primary i{
     padding-top: 8px;
