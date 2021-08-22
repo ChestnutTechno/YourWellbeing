@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Your Wellbeing</title>
+    <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+    <meta name="keywords"
+        content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+    <!--content-->
+    <section class="section-padding">
+        <div class="container">
+            <div class="row" style="padding: 20px;">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <h2>Oops!</h2>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <h3>The requested page does not exist.</h3>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <h3>You will be direct to home page in <b id="show-time">5</b> seconds</h3>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 text-center">
+                    <h3>Or you can click <a href="index.html">here</a> .</h3>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </section>
+    <!--/ content-->
+
+
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="contactform/contactform.js"></script>
+
+    <!-- redirect count down-->
+    <script type="text/javascript">
+        var settimmer = 0;
+        $(function(){
+                window.setInterval(function() {
+                    var timeCounter = $("b[id=show-time]").html();
+                    var updateTime = eval(timeCounter)- eval(1);
+                    $("b[id=show-time]").html(updateTime);
+
+                    if(updateTime == 0){
+                        window.location = ("index.html");
+                    }
+                }, 1000);
+
+        });
+    </script>
+
+</body>
+
+</html>
