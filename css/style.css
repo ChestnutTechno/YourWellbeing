@@ -139,6 +139,12 @@ banner
 	min-height: 650px;
 	position: relative;
 }
+#banner-other-page{
+	background: url('../img/bg-banner.jpg') no-repeat fixed;
+	background-size: cover;
+	min-height: 300px;
+	position: relative;
+}
 .bg-color{
 	background-color: RGBA(243, 135, 135, 0.78);
 	min-height: 650px;
