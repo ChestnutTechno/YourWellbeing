@@ -50,21 +50,63 @@
         <div class="row">
             <div class="col-md-4 col-sm-4">
                 <h2 class="ser-title">Medical Guidance</h2>
+                <h5 style="color: #999999">How to seek for professional help in Victoria?</h5>
                 <hr class="botm-line">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-sm-4">
                 <ul class="nav flex-column">
-                    <li class="nav-item">
-                      <a class="nav-link active" aria-current="page" href="#">Mental illness</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Claiming / billing</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Making appointments</a>
-                    </li>
-                  </ul>
+                    <li><a href="#mi" data-toggle="tab">Mental illness</a></li>
+                    <li><a href="#cb" data-toggle="tab">Claiming / billing</a></li>
+                    <li><a href="#ma" data-toggle="tab">Making appointments</a></li>
+                </ul>
             </div>
             <div class="col-md-8 col-sm-8">
-                
+                <div class="tab-content">
+                <div id="mi" class="tab-pane active">
+                    <h3 >Mental illness</h3>
+                    <p style="font-family: Raleway;line-height: 2;">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Duis vehicula faucibus eleifend. Vestibulum quis lectus
+                        congue, aliquet enim eu, rutrum sapien. Integer vel quam
+                        mattis, dapibus nunc a, bibendum justo. Praesent id dolor
+                        venenatis, volutpat odio a, venenatis dui. Nunc finibus
+                        neque a nisi blandit, et efficitur dolor semper. Aliquam
+                        cursus non lorem non luctus. Maecenas eu diam nunc.
+                        Praesent vel condimentum augue, ac ullamcorper justo.
+                        Etiam posuere risus eu magna congue, consectetur ullamcorper
+                        risus convallis. Sed est leo, ornare sed magna eu, auctor
+                        pharetra ligula.
+                    </p>
+                    <p style="font-family: Raleway; line-height: 2">
+                        Nulla eget lobortis eros, et laoreet quam. Nullam augue turpis,
+                        tincidunt porttitor mattis ac, tincidunt sagittis dui. Sed
+                        facilisis blandit leo, non porttitor ante semper eget. Mauris
+                        eu nisi urna. Etiam enim lorem, congue a lacus in, vulputate
+                        varius dolor. Nunc at efficitur augue. Donec sed felis sit amet
+                        diam hendrerit euismod. Etiam tortor mauris, mollis vitae tincidunt
+                        consequat, aliquet tempus diam. Sed at ornare eros. Donec mollis
+                        gravida consequat. Sed id laoreet lorem, a condimentum est.
+                        Aenean aliquam, neque et blandit aliquam, mauris tortor viverra
+                        mauris, ut euismod sem massa non massa. Quisque eros massa, sagittis
+                        quis dui id, ultrices egestas massa.
+                    </p>
+                </div>
+                <div id="cb" class="tab-pane">
+                    <h3 >Claiming & Billing</h3>
+                    <p style="font-family: Raleway;line-height: 2;">
+                        Proin facilisis, risus non aliquam facilisis, dolor metus tincidunt mauris, sed pulvinar massa odio semper neque. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi pharetra, ipsum eget laoreet imperdiet, orci est ultricies orci, vitae sollicitudin ipsum tellus vel lorem. Vivamus pretium ac nisi at varius. Donec et mollis lacus, sit amet porta mi. Fusce sem ex, malesuada fermentum magna nec, vulputate tincidunt nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Praesent condimentum diam ipsum, ut ullamcorper purus consequat vel. Mauris eget interdum ex. Pellentesque porta egestas auctor. Proin at mauris bibendum, placerat odio eu, feugiat magna. Interdum et malesuada fames ac ante ipsum primis in faucibus.
+                    </p>
+                    <p style="font-family: Raleway; line-height: 2">
+                        Vestibulum at dui a nunc ultricies semper at quis urna. Sed a elit mollis, scelerisque nulla ut, sagittis nibh. Morbi metus lectus, sagittis a diam ut, cursus cursus nulla. Morbi sodales volutpat laoreet. Integer pretium congue gravida. Nam venenatis ligula iaculis, gravida mauris vel, pretium est. Vestibulum placerat porttitor massa eu iaculis. Nulla eget egestas sem. Phasellus nec tellus sit amet arcu auctor ultrices in et arcu. Aliquam in lectus non est ornare condimentum quis vulputate arcu. Praesent rutrum tellus eget iaculis tincidunt. Donec nibh.
+                    </p>
+                </div>
+                <div id="ma" class="tab-pane">
+                    <h3 >Making appointments</h3>
+                    <div id="diagram"></div>
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -91,7 +133,57 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
-<script src="contactform/contactform.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.js"></script>
+<script type="text/javascript">
+    var diagram = flowchart.parse("st=>start: Patient calls for an appointment\n" +
+        "op1=>operation: Patient information,\n" +
+        "Gender, age,\n" +
+        "insurance, language,\n" +
+        "new/established\n" +
+        "io1=>inputoutput: Appointment type\n" +
+        "io2=>inputoutput: Scheduling policy\n" +
+        "op2=>operation: Schedule an appointment\n" +
+        "op3=>operation: Patient arrives\n" +
+        "cond1=>condition: Patient is\n" +
+        "in the system?\n" +
+        "op4=>operation: Re-register patient\n" +
+        "cond2=>condition: Available general\n" +
+        "practitioners?\n" +
+        "op5=>operation: Waiting room\n" +
+        "op6=>operation: GP asks and \n" +
+        "treats the patient\n" +
+        "cond3=>condition: Need further\n" +
+        "treatment?\n" +
+        "cond4=>condition: Need additional\n" +
+        "medicine?\n" +
+        "op7=>operation: Make a new\n" +
+        "appointment\n" +
+        "op8=>operation: Patient goes to\n" +
+        "pharmacy with\n" +
+        "prescription\n" +
+        "op9=>operation: Purchasing medicines\n" +
+        "& consulting how\n" +
+        "to use medicines\n" +
+        "e=>end: Patient leaves\n" +
+        "\n" +
+        "\n" +
+        "st->op1->io1->io2->op2->op3->cond1\n" +
+        "cond1(yes,right)->cond2\n" +
+        "cond1(no)->op4(left)->cond1\n" +
+        "cond2(yes,right)->op6\n" +
+        "cond2(no)->op5(left)->cond2\n" +
+        "op6->cond3\n" +
+        "cond3(yes,right)->op7(top)->op2\n" +
+        "cond3(no)->cond4\n" +
+        "cond4(yes, right)->op8(right)->op9->e\n" +
+        "cond4(no)->e");
+    diagram.drawSVG('diagram',{
+        'line-width':1,
+        'font-size':14,
+        'maxWidth':700
+    });
+</script>
 
 </body>
 
