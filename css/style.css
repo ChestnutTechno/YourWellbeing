@@ -231,6 +231,49 @@ td p{
 }
 
 /***************************************
+Fun fact
+***************************************/
+#fun-facts {
+	display: table;
+	width: 100%;
+	height: 100%;
+	min-height: 100%;
+	z-index: 1;
+	padding-top: 80px;
+	padding-bottom: 60px;
+}
+.fact-container {
+	padding-top:40px;
+	padding-bottom:30px;
+}
+.fact h2 {
+	font-size: 65px;
+	letter-spacing: 0px;
+	margin: 0;
+	line-height: 65px;
+}
+.fact h4 {
+	font-size: 14px;
+	margin-bottom: 0px;
+}
+.fact p {
+	font-size: 13px;
+	margin-top: 3px;
+}
+.counter {
+	font-family: 'Exo', sans-serif;
+	font-size: 65px;
+	font-weight: 700;
+	letter-spacing: 0px;
+	margin: 0;
+	line-height: 65px;
+}
+#fun-facts .lead {
+	font-size: 16px;
+}
+
+
+/***************************************
 footer
 ***************************************/
 #footer{
