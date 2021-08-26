@@ -212,6 +212,19 @@ services
 	font-size: 15px !important;
 }
 
+.urgent p{
+	font-family: Raleway;
+	font-size: 30px;
+	line-height: 2;
+	color: #FBFBFB;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+.urgent{
+	background-color: #a70000;
+	width: 950px;
+}
+
 /***************************************
 footer
 ***************************************/
