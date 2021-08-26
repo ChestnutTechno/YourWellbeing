@@ -84,9 +84,10 @@
                     issues</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6"></div>
-            <div class="col-md-12">
-                <hr>
+            <div class="col-md-3 col-sm-6">
+                <p style="font-size: 10px">Source: <a href="https://www.sbs.com.au/news/93-per-cent-of-international-students-suffering-poor-mental-health-due-to-no-on-campus-study-survey-finds/80684807-6485-48f8-ada3-8b9c8213fe28" target="_blank">
+                    Evan Young</a>, <a href="https://internationaleducation.gov.au/International-network/Australia/InternationalStrategy/EGIProjects/Documents/ORYGEN%20-%20International%20Student%20Mental%20Health%20and%20Physical%20Safety%20June%202020.pdf" target="_blank">Orygen</a>
+                </p>
             </div>
             <div class="col-md-12 text-center">
                 <h3>What is YourWellbeing?</h3>
@@ -118,8 +119,8 @@
 <section id="service" class="section-padding">
     <div class="container">
         <div class="row">
-
-            <div class="col-md-6 col-sm-6">
+            <div class="col-md-2"></div>
+            <div id = "mental_health" class="col-md-4 card">
                 <div class="service-info">
                     <div class="icon">
                         <i class="fa fa-stethoscope"></i>
@@ -130,7 +131,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 col-sm-6">
+            <div id = "medical_guid" class="col-md-4 card">
                 <div class="service-info">
                     <div class="icon">
                         <i class="fa fa-ambulance"></i>
@@ -141,6 +142,7 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-4"></div>
         </div>
     </div>
 </section>
@@ -173,6 +175,14 @@
 <script type="text/javascript" src="js/plugins/waypoints.min.js"></script>
 <script type="text/javascript" src="js/plugins/counterup.min.js"></script>
 <script type="text/javascript" src="js/animation.js"></script>
+<script type="text/javascript">
+    $("#mental_health").click(function(){
+        window.location.assign("mentalHealth.html");
+    });
+    $("#medical_guid").click(function(){
+        window.location.assign("medicalGuidance.html");
+    });
+</script>
 
 </body>
 
