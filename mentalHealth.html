@@ -82,7 +82,7 @@
         <div id="cb" class="row">
             <div class="col-md-4 col-sm-4">
                 <h2 class="ser-title">Stress level testing</h2>
-                <h5 style="color: #999999">Want To Measure Your Stress Levels?</h5>
+                <h5 style="color: #999999">Want to measure your stress levels?</h5>
                 <hr class="botm-line">
 
             </div>
@@ -166,8 +166,13 @@
                     <br><br><br><br>
                 </div>
                 <div class="row" id="resultDiv" style="display: none;">
-                    <h2 class="ser-title" id="result" style="display: none"></h2><br>
+                    <div class="col-sm-8"><h2 class="ser-title" id="resultTitle"></h2><br></div>
+                    <div class="col-sm-4" style="display: none" id="gauge1"><img src="img/gauge/gauge1.png"></div>
+                    <div class="col-sm-4" style="display: none"id="gauge2"><img src="img/gauge/gauge2.png"></div>
+                    <div class="col-sm-4" style="display: none"id="gauge3"><img src="img/gauge/gauge3.png"></div>
+                    <div class="col-sm-4" style="display: none"id="gauge4"><img src="img/gauge/gauge4.png"></div>
                 </div>
+                <div class="row" id="resultDiv2" style="display: none;"><p style="font-family: Raleway;line-height: 2;" id="result"></p></div>
             </div>
             <div class="col-sm-1">
                 <div>
@@ -185,7 +190,10 @@
         </div>
         <div class="row">
             <div class="col-sm-10">
-                <div id="diagram" class></div>
+                <p style="font-family: Raleway;line-height: 2;">
+
+                    o
+                </p>
             </div>
             <div class="col-sm-1">
                 <div>
@@ -232,26 +240,46 @@
             for (var i=0; i<inputElems.length; i++) {
                 if (inputElems[i].type === "checkbox" && inputElems[i].checked === true){
                     count++;
-
                 }
             }
             if(count >= 0 && count <= 3){
-                document.getElementById("resultDiv").style.display='block';
-                document.getElementById("result").textContent="Your stress level is: Low";
-                document.getElementById("result").style.display='block';
-
+                document.getElementById("resultDiv").style.display="block"
+                document.getElementById("resultDiv2").style.display="block"
+                document.getElementById("resultTitle").innerHTML="<br><br><br><br><br><br>Your stress level is: Low"
+                document.getElementById("result").innerHTML="<br><br><br>According to the results of the stress symptom checklist, your stress level is low.\n" +
+                    "This means that you can control your own stress response. Perhaps you do not regard the various stresses you encounter as threats, so the amount of stress in your life may be quite low. You have the ability to enjoy stress and quickly return to a calm state, so it will not pose a threat to your health. However, doing some relaxation exercises is still beneficial.\n"
+                document.getElementById("gauge1").style.display="block"
+                document.getElementById("gauge2").style.display="none"
+                document.getElementById("gauge3").style.display="none"
+                document.getElementById("gauge4").style.display="none"
             }else if(count >= 4 && count <= 14){
-                document.getElementById("resultDiv").style.display='block';
-                document.getElementById("result").textContent="Your stress level is: Moderate"
-                document.getElementById("result").style.display='block';
+                document.getElementById("resultDiv").style.display="block"
+                document.getElementById("resultTitle").innerHTML="<br><br><br><br><br><br>Your stress level is: Moderate"
+                document.getElementById("result").innerHTML="<br><br><br>According to the results of the stress symptom checklist, your stress level is moderate.\n" +
+                    "This means you are moderately stressed and may be starting to be bad for your health. You can carefully reflect on how you deal with stress, and try to control yourself to avoid tension before the stress appears, so as to eliminate the physiological stress response. Doing more exercise or improving nutrition will help you.\n"
+                document.getElementById("gauge2").style.display="block"
+                document.getElementById("gauge3").style.display="none"
+                document.getElementById("gauge4").style.display="none"
+                document.getElementById("gauge1").style.display="none"
             }else if(count >=15 && count <=21){
-                document.getElementById("resultDiv").style.display='block';
-                document.getElementById("result").textContent="Your stress level is: High"
-                document.getElementById("result").style.display='block';
+                document.getElementById("resultDiv").style.display="block"
+                document.getElementById("resultTitle").innerHTML="<br><br><br><br><br><br>Your stress level is: High"
+                document.getElementById("result").innerHTML="<br><br><br>According to the results of the stress symptom checklist, your stress level is high.\n" +
+                    "This means that you are experiencing too much stress, which is damaging your health and causing problems in your relationships. Your actions can hurt yourself and may affect others. Therefore, it is very important for you to learn how to reduce your stress. You may have to spend a lot of time doing exercises, learning to control stress, or you can seek professional help.\n"
+                document.getElementById("gauge3").style.display="block"
+                document.getElementById("gauge2").style.display="none"
+                document.getElementById("gauge1").style.display="none"
+                document.getElementById("gauge4").style.display="none"
             }else{
-                document.getElementById("resultDiv").style.display='block';
-                document.getElementById("result").textContent="Your stress level is: Very High"
-                document.getElementById("result").style.display='block';
+                document.getElementById("resultDiv").style.display="block"
+                document.getElementById("resultTitle").innerHTML="<br><br><br><br><br><br>Your stress level is: Very High"
+                document.getElementById("result").innerHTML="<br><br><br>According to the results of the stress symptom checklist, your stress level is very high.\n" +
+                    "This means that you are indeed under extreme stress, which is hurting your own health. You need the examination and help of a general practitioner or professional psychotherapist. They can give some advice and help you reduce stress, thereby improving your quality of life.\n"
+                document.getElementById("gauge4").style.display="block"
+                document.getElementById("gauge2").style.display="none"
+                document.getElementById("gauge1").style.display="none"
+                document.getElementById("gauge3").style.display="none"
+
             }
         }
     }
