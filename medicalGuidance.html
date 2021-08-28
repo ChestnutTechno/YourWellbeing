@@ -32,10 +32,22 @@
                     </div>
                     <div class="collapse navbar-collapse navbar-right" id="myNavbar">
                         <ul class="nav navbar-nav">
-                            <li class=""><a href="index.html">Home</a></li>
-                            <li class=""><a href="mentalHealth.html">Mental Health</a></li>
-                            <li class="active"><a href="medicalGuidance.html">Medical Guidance</a></li>
-<!--                            <li class=""><a href="404.html">About us</a></li>-->
+                            <li class="active"><a href="#banner">Home</a></li>
+                            <li class="dropdown"><a href="mentalHealth.html" class="dropdown-toggle">Mental Health intro</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="mentalHealth.html#mi">Mental health</a></li>
+                                    <li><a href="mentalHealth.html#cb">Stress level testing</a></li>
+                                    <li><a href="mentalHealth.html#ma">Solution</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown"><a href="medicalGuidance.html" class="dropdown-toggle">Medical Guidance</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="medicalGuidance.html#mi">Mental support</a></li>
+                                    <li><a href="medicalGuidance.html#cb">How to claim</a></li>
+                                    <li><a href="medicalGuidance.html#ma">How to visit GPs</a></li>
+                                </ul>
+                            </li>
+                            <!--                            <li class=""><a href="404.html">About us</a></li>-->
                         </ul>
                     </div>
                 </div>
@@ -190,8 +202,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-11">
-                <div id="diagram" class></div>
+            <div class="col-sm-1"></div>
+            <div class="col-sm-10">
+                <div id="diagram" style="overflow-y: scroll;height: 900px;">
+                    <svg width="778">
+                        <rect id = "start" class = "fc_start_end" height = "70" width = "230" x = "274" y = "30" fill = "#E3E6DA" rx = "35"/>
+                        <text x="339" y="58">Patient calling</text>
+                        <text x="285" y="78">for making appointments</text>
+                    </svg>
+                </div>
             </div>
             <div class="col-sm-1">
                 <div>
@@ -226,55 +245,14 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.js"></script>
 <script type="text/javascript">
-    var diagram = flowchart.parse("st=>start: Patient calls for an appointment\n" +
-        "op1=>operation: Patient information,\n" +
-        "Gender, age,\n" +
-        "insurance, language,\n" +
-        "new/established\n" +
-        "io1=>inputoutput: Appointment type\n" +
-        "io2=>inputoutput: Scheduling policy\n" +
-        "op2=>operation: Schedule an appointment\n" +
-        "op3=>operation: Patient arrives\n" +
-        "cond1=>condition: Patient is\n" +
-        "in the system?\n" +
-        "op4=>operation: Re-register patient\n" +
-        "cond2=>condition: Available general\n" +
-        "practitioners?\n" +
-        "op5=>operation: Waiting room\n" +
-        "op6=>operation: GP asks and \n" +
-        "treats the patient\n" +
-        "cond3=>condition: Need further\n" +
-        "treatment?\n" +
-        "cond4=>condition: Need additional\n" +
-        "medicine?\n" +
-        "op7=>operation: Make a new\n" +
-        "appointment\n" +
-        "op8=>operation: Patient goes to\n" +
-        "pharmacy with\n" +
-        "prescription\n" +
-        "op9=>operation: Purchasing medicines\n" +
-        "& consulting how\n" +
-        "to use medicines\n" +
-        "e=>end: Patient leaves\n" +
-        "\n" +
-        "\n" +
-        "st->op1->io1->io2->op2->op3->cond1\n" +
-        "cond1(yes,right)->cond2\n" +
-        "cond1(no)->op4(left)->cond1\n" +
-        "cond2(yes,right)->op6\n" +
-        "cond2(no)->op5(left)->cond2\n" +
-        "op6->cond3\n" +
-        "cond3(yes,right)->op7(top)->op2\n" +
-        "cond3(no)->cond4\n" +
-        "cond4(yes, right)->op8(right)->op9->e\n" +
-        "cond4(no)->e");
-    diagram.drawSVG('diagram',{
-        'line-width':1,
-        'font-size':14,
-        'maxWidth':700
-    });
-</script>
+    $("#start").mouseover(function(){
+        $("#start").animate({height: "80", width:"240",x: "269", y:"25", rx:"40"}, 200);
 
+    })
+    $("#start").mouseout(function(){
+        $("#start").animate({height: "70",width:"230", x : "274", y : "30",rx:"35"}, 200);
+    })
+</script>
 </body>
 
 </html>
