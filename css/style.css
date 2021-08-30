@@ -14,9 +14,12 @@ body {
 	color: #999999;
 	font-size: 18px;
 }
-ol, ul {
-	list-style: none;
+
+ol {
+	list-style-type:decimal;
+
 }
+
 blockquote, q {
 	quotes: none;
 }
@@ -164,12 +167,7 @@ banner
 	min-height: 650px;
 	position: relative;
 }
-#stressTest{
-	background: url('../img/stess.png') no-repeat fixed;
-	background-size: cover;
-	min-height: 650px;
-	position: relative;
-}
+
 #banner-other-page{
 	background: url('../img/bg-banner.jpg') no-repeat fixed;
 	background-size: cover;
