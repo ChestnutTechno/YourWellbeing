@@ -36,7 +36,7 @@ h1, h2, h3, h4, h5, h6
 	color: #222222;
 }
 a, a:hover, a:focus, a:active{
-    outline: none;
+	outline: none;
 }
 
 .section-padding{
@@ -44,42 +44,42 @@ a, a:hover, a:focus, a:active{
 
 }
 h2 {
-    line-height: 20px;
-    margin: 0;
-    font-size: 28px;
-    font-weight: 700;
-    text-transform: uppercase;
+	line-height: 20px;
+	margin: 0;
+	font-size: 28px;
+	font-weight: 700;
+	text-transform: uppercase;
 }
 hr.botm-line {
-    height: 3px;
-    width: 60px;
-    background: #ffb737;
-    position: relative;
-    border: 0;
-    margin: 20px 0 20px 0;
+	height: 3px;
+	width: 60px;
+	background: #ffb737;
+	position: relative;
+	border: 0;
+	margin: 20px 0 20px 0;
 }
 
 /***************************************
 banner
 ***************************************/
 .navbar {
-    margin-bottom: 0px;
-    border: 0px;
+	margin-bottom: 0px;
+	border: 0px;
 }
 .navbar {
-    border-radius: 0px;
+	border-radius: 0px;
 }
 .navbar-default {
-    background-color: #fff;
-    padding: 20px 0;
-    transition: all 0.3s;
+	background-color: #fff;
+	padding: 20px 0;
+	transition: all 0.3s;
 }
 .navbar-default {
-    background-color: transparent;
-    border: 0px;
+	background-color: transparent;
+	border: 0px;
 }
 .navbar {
-    border-radius: 0px;
+	border-radius: 0px;
 }
 
 .navbar-brand
@@ -90,12 +90,12 @@ banner
 }
 
 .navbar-brand img {
-    padding-top: 2px;
-    width: 120px !important;
+	padding-top: 2px;
+	width: 120px !important;
 }
 
 .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
-    color: #fafafa;
+	color: #fafafa;
 }
 
 .dropdown .dropdown-menu{
@@ -120,8 +120,8 @@ banner
 }
 
 .top-nav-collapse {
-    padding: 0;
-    background: rgb(144, 176, 95);
+	padding: 0;
+	background: rgb(144, 176, 95);
 }
 
 .white, .white:hover, .white:focus
@@ -134,9 +134,9 @@ banner
 	display: block;
 }
 .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:focus, .navbar-default .navbar-nav > .active > a:hover {
-    color: #fff;
-    text-transform: uppercase;
-    background-color: #74923A;
+	color: #fff;
+	text-transform: uppercase;
+	background-color: #74923A;
 }
 .navbar-default .navbar-nav > li > a
 {
@@ -148,15 +148,15 @@ banner
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
 {
 	color: #fff;
-    text-transform: uppercase;
-    background-color: rgb(130, 160, 87);
+	text-transform: uppercase;
+	background-color: rgb(130, 160, 87);
 }
 .affix {
-    background-color: #ffffff !important;
+	background-color: #ffffff !important;
 }
 .affix .navbar-nav > li > a:hover, .affix .navbar-nav > li > a:focus
 {
-    background-color: rgb(184, 12, 115) !important;
+	background-color: rgb(184, 12, 115) !important;
 }
 #banner{
 	background: url('../img/bg-banner.jpg') no-repeat fixed;
@@ -197,17 +197,17 @@ banner
 }
 
 .overlay-detail a i {
-    text-align: center;
-    position: center;
+	text-align: center;
+	position: center;
 	margin-top: 240px;
-    bottom: 25px;
-    font-size: 100px;
-    color: #fff;
+	bottom: 25px;
+	font-size: 100px;
+	color: #fff;
 
 }
 .text-primary i{
-    padding-top: 8px;
-    display: inline-block;
+	padding-top: 8px;
+	display: inline-block;
 }
 /***************************************
 services
@@ -219,6 +219,8 @@ services
 }
 .service-info{
 	margin-bottom: 20px;
+	height: 164px;
+	width: 328px;
 }
 .icon-info h4{
 	padding-bottom: 15px;
@@ -297,10 +299,13 @@ Fun fact
 Card layout
 ***************************************/
 .card{
-	transition: box-shadow .3s;
+	transition: box-shadow .5s;
 	border-radius:10px;
 	margin: 10px;
 	padding: 30px;
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(130, 160, 87);
 }
 
 .card:hover{
@@ -334,8 +339,8 @@ footer
 }
 
 .footer-line {
-    padding: 30px 0px;
-    color: #fff;
+	padding: 30px 0px;
+	color: #fff;
 }
 
 
