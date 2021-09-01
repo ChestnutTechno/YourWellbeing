@@ -82,7 +82,7 @@
             <div class="col-sm-10">
                 <div>
                     <div class="text-center urgent">
-                        <p>If you are experience serious injury </p>
+                        <p>If you are experiencing serious injury </p>
                         <p>or need urgent medical assistance, please directly call</p>
                         <p style="font-size: 50px">000 (triple zero)</p>
                     </div>
@@ -206,7 +206,7 @@
             <div class="col-sm-10">
                 <h3>Online appointment booking platform</h3>
                 <div class="col-sm-6">
-                    <div class="card text-center" onclick="window.open('https://www.hotdoc.com.au/','_blank')">
+                    <div id = "hot_doc" class="card text-center">
                         <h4>Hot Doc</h4>
                     </div>
                 </div>
@@ -249,12 +249,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.js"></script>
 <script type="text/javascript">
-    $("#start").mouseover(function(){
-        $("#start").animate({height: "80", width:"240",x: "269", y:"25", rx:"40"}, 200);
-
-    })
-    $("#start").mouseout(function(){
-        $("#start").animate({height: "70",width:"230", x : "274", y : "30",rx:"35"}, 200);
+    $('#hot_doc').click(function(){
+        let base_url = "https://www.hotdoc.com.au/search?around="
+        navigator.geolocation.getCurrentPosition(function (position){
+            let lat = position.coords.latitude;
+            let lon = position.coords.longitude;
+            console.log(lat + ',' + lon);
+            let dest = base_url + lat + "%2C" + lon;
+            window.open(dest, '_blank');
+        })
     })
 </script>
 </body>
