@@ -163,9 +163,9 @@ banner
 }
 #banner{
 	background: url('../img/bg-banner.jpg') no-repeat fixed;
-	background-size: cover;
+	background-size: auto;
 	min-height: 650px;
-	position: relative;
+	position: center;
 }
 
 #banner-other-page{
