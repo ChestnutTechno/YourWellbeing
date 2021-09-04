@@ -88,8 +88,8 @@ banner
 .navbar-brand
 {
 	text-align: center;
-	font-family: 'Chewy', cursive;
-	font-size: 32px;
+	font-family: 'Candal', sans-serif;
+	font-size: 35px;
 }
 
 .navbar-brand img {
@@ -234,12 +234,12 @@ Urgent block
 	font-family: Raleway;
 	font-size: 30px;
 	line-height: 2;
-	color: #FBFBFB;
+	color: #222222;
 	font-weight: bold;
 	text-transform: uppercase;
 }
 .urgent{
-	background-color: #a70000;
+	background-color: #ffffff;
 	width: 950px;
 }
 
