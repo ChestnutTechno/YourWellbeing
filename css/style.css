@@ -309,6 +309,16 @@ Card layout
 	border-color: rgb(130, 160, 87);
 
 }
+#yoga_img{
+	background-image: url("../img/yoga.jpg");
+
+	background-size: cover;
+
+}
+#meditation_img{
+	background-image: url('../img/meditation.jpg');
+	background-size: cover;
+}
 #mental_health{
 	background-image: url('../img/cardBackground1.png');
 
