@@ -316,8 +316,8 @@ Card layout
 #medical_guid{
 	background-image: url('../img/cardBackground2.png');
 	background-size: cover;
-
 }
+
 
 .card:hover{
 	box-shadow: 0 0 11px rgba(33,33,33,.2);
