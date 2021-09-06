@@ -251,6 +251,7 @@ Tables
 ***************************************/
 td p{
 	font-family: Raleway;
+	color: #2d2b29;
 	font-size: 14px;
 }
 
@@ -376,6 +377,36 @@ Card layout
 	}
 }
 
+#bmr_cal th, td {
+	padding-top: 10px;
+	padding-left: 20px;
+}
+#bmr_cal{
+	margin-left: auto;
+	margin-right: auto;
+}
+#bmr_cal th, td span{
+	font-family: Raleway;
+	color: #2d2b29;
+	font-size: 16px;
+}
+#bmr_cal p {
+	padding-top: 10px;
+	font-size: 16px;
+	color: #2d2b29;
+}
+select{
+	font-family: Raleway;
+	color: #2d2b29;
+	font-size: 16px;
+	width: 100px;
+}
+input{
+	width: 100px;
+}
+#res p{
+	margin-top: 20px;
+}
 
 /***************************************
 footer
