@@ -212,7 +212,7 @@ banner
 services
 ***************************************/
 .icon i{
-	color: #315e26;
+	color: #63605c;
 	font-size: 45px;
 	margin-bottom: 25px;
 }
@@ -235,7 +235,7 @@ Urgent block
 ***************************************/
 .urgent p{
 	font-family: Raleway;
-	font-size: 30px;
+	font-size: 20px;
 	line-height: 2;
 	color: #222222;
 	font-weight: bold;
@@ -326,6 +326,30 @@ Card layout
 }
 #medical_guid{
 	background-image: url('../img/cardBackground2.png');
+	background-size: cover;
+}
+
+#nutritionPlan{
+	background-image: url('../img/nutrition.jpeg');
+	background-size: cover;
+
+}
+#exercisePlan{
+	background-image: url('../img/exercise.jpeg');
+	background-size: cover;
+}
+#hot_doc{
+	background-image: url('../img/insurance/hotdoc.png');
+	background-size: 100%;
+
+}
+#healthEngine{
+	background-image: url('../img/insurance/healthEngine.png');
+	background-size: cover;
+
+}
+#mentalIllness_img{
+	background-image: url('../img/mental_illness.jpeg');
 	background-size: cover;
 }
 
