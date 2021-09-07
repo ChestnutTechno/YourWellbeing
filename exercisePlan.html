@@ -79,7 +79,39 @@
 <!--/ banner-->
 
 <!--Exercise Plan-->
-<section class="section-padding">
+<section class="section-padding">>
+  <div class="container">
+    <div class="row">
+      <div align="center">
+        <h1 class="ser-title" style="font-size: 40px">Importance of exercise</h1>
+        <h5 style="color: #999999">Why we need exercise?</h5>
+        <hr class="botm-line">
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div>
+          <p style="font-family: Raleway;line-height: 2;">
+            Not only does exercise improve your physical health, but it also promotes your mental health. Exercise increases the production of chemicals in your brain that boost your mood and memory and learning abilities.
+          </p>
+          <p style="font-family: Raleway;line-height: 2;">
+            Endorphins and serotonin are substances released during exercise that boost your mood. It can also help you go out into the world, lessen feelings of loneliness and isolation, and connect you with others.
+
+            Exercise can help you recover from mental health difficulties by reducing stress and symptoms of mental health diseases such as sadness and anxiety.
+
+            It can also help you sleep better, which is beneficial in a variety of ways.
+          </p><br><br>
+          <div class="row" align="center"><div id="player3"></div></div>
+          <br><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <hr>
+
   <div class="float-left">
     <div class="container">
       <ul class="nav navbar-right">
@@ -178,7 +210,7 @@
             <div class="col-sm-4">
               <li class="olli">Body & Breath Meditation (5 Mins)</li><br>
               <audio controls>
-                <source src="audio/audio/BodyBreath5mins.mp3" type="audio/mpeg">
+                <source src="audio/BodyBreath5mins.mp3" type="audio/mpeg">
               </audio><br><br><br><br>
               <li class="olli">Body & Breath Meditation (20 Mins)</li><br>
               <audio controls>
@@ -329,6 +361,15 @@
       height: '506',
       width: '900',
       videoId: 'VaoV1PrYft4',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+    player3 = new YT.Player('player3', {
+      height: '506',
+      width: '900',
+      videoId: 'BHY0FxzoKZE',
       events: {
         'onReady': onPlayerReady,
         'onStateChange': onPlayerStateChange

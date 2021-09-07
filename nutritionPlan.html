@@ -88,6 +88,32 @@
       </ul>
     </div>
   </div>
+<!--Importance of nutrition-->
+  <div class="container">
+    <div class="row">
+      <div align="center">
+        <h1 class="ser-title" style="font-size: 40px">Importance of Nutrition</h1>
+        <h5 style="color: #999999">Why we need a nutrition plan?</h5>
+        <hr class="botm-line">
+      </div>
+    </div>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+        <div>
+          <p style="font-family: Raleway;line-height: 2;">
+            Our diet and mental health have a complicated relationship. However, there is a relationship between what we eat and how we feel, according to studies.
+          </p>
+          <p style="font-family: Raleway;line-height: 2;">
+            Our brain is affected by what we eat. Some meals can improve our mood. A Mediterranean-style diet that includes plenty of vegetables, seafood, fresh herbs, garlic, olive oil, cereals, and grains, as well as fish oil, can help to alleviate depressive symptoms.
+          </p><br><br>
+          <div class="row" align="center"><div id="player4"></div></div>
+          <br><br><br>
+        </div>
+      </div>
+    </div>
+  </div>
 <!--What is Serotonin-->
   <div class="container" id="introduction">
     <div id="mi" class="row">
@@ -262,6 +288,53 @@ $('#submit_btn').click(function(){
   }
 });
 
+</script>
+
+<!--Video-->
+<script>
+  // 2. This code loads the IFrame Player API code asynchronously.
+  var tag = document.createElement('script');
+
+  tag.src = "https://www.youtube.com/iframe_api";
+  var firstScriptTag = document.getElementsByTagName('script')[0];
+  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  // 3. This function creates an <iframe> (and YouTube player)
+  //    after the API code downloads.
+  var player;
+
+  function onYouTubeIframeAPIReady() {
+    player4 = new YT.Player('player4', {
+      height: '506',
+      width: '900',
+      videoId: '3dqXHHCc5lA',
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+
+  // 4. The API will call this function when the video player is ready.
+  function onPlayerReady(event) {
+
+  }
+
+  // 5. The API calls this function when the player's state changes.
+  //    The function indicates that when playing a video (state=1),
+  //    the player should play for six seconds and then stop.
+  var done = false;
+
+  function onPlayerStateChange(event) {
+    if (event.data == YT.PlayerState.PLAYING && !done) {
+
+      done = true;
+    }
+  }
+
+  function stopVideo() {
+    player.stopVideo();
+  }
 </script>
 
 </body>
