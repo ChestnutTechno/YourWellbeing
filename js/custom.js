@@ -1,5 +1,7 @@
 (function($) {
 
+  "use strict";
+
   // Add smooth scrolling to all links in navbar
   // $(".navbar a,a.btn-appoint, .quick-info li a, .overlay-detail a").on('click', function(event) {
   //
@@ -28,4 +30,24 @@
     }
   });
 
+
+  $(window).load(function(){
+    $('.preloader').fadeOut(1000); // set duration in brackets
+  });
+
+  //Navigation Section
+  $('.navbar-collapse a').on('click',function(){
+    $(".navbar-collapse").collapse('hide');
+  });
+
+  // Owl Carousel
+  $('.owl-carousel').owlCarousel({
+    animateOut: 'fadeOut',
+    items:1,
+    loop:true,
+    autoplay:true,
+  })
+
+  // PARALLAX EFFECT
+  $.stellar();
 })(jQuery);

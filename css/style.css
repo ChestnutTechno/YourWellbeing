@@ -1,6 +1,7 @@
 html{
 	scroll-behavior: smooth;
 }
+
 :target:before {
 	content: "";
 	display: block;
@@ -62,9 +63,105 @@ hr.botm-line {
 	margin: 20px 0 20px 0;
 }
 
-/***************************************
-banner
-***************************************/
+/*---------------------------------------
+       PRE LOADER
+  -----------------------------------------*/
+
+.preloader {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 99999;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: center;
+	align-items: center;
+	background: none repeat scroll 0 0 #ffffff;
+}
+
+.spinner {
+	border: 1px solid transparent;
+	border-radius: 3px;
+	position: relative;
+}
+
+.spinner:before {
+	content: '';
+	box-sizing: border-box;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 45px;
+	height: 45px;
+	margin-top: -10px;
+	margin-left: -10px;
+	border-radius: 50%;
+	border: 1px solid #575757;
+	border-top-color: #ffffff;
+	animation: spinner .9s linear infinite;
+}
+
+@-webkit-@keyframes spinner {
+	to {transform: rotate(360deg);}
+}
+
+@keyframes spinner {
+	to {transform: rotate(360deg);}
+}
+
+/*---------------------------------------
+      MENU
+  -----------------------------------------*/
+
+header {
+	background: #ffffff;
+	border-bottom: 1px solid #f2f2f2;
+	display: flex;
+	height: 45px;
+}
+
+header .col-md-8 {
+	padding-right: 0;
+}
+
+header p,
+header span {
+	font-size: 12px;
+	line-height: 24px;
+	padding-top: 12px;
+}
+
+header a,
+header span {
+	color: #747474;
+}
+
+header span {
+	font-weight: 500;
+	display: inline-block;
+	padding: 11px 15px;
+}
+
+header span.date-icon {
+	border-left: 1px solid #f2f2f2;
+	border-right: 1px solid #f2f2f2;
+	padding-right: 19px;
+	padding-left: 19px;
+}
+
+header span i {
+	color: #a5c422;
+	margin-right: 5px;
+}
+
+
+
+/*---------------------------------------
+    MENU
+-----------------------------------------*/
+
 .navbar {
 	margin-bottom: 0px;
 	border: 0px;
@@ -104,7 +201,7 @@ banner
 .dropdown .dropdown-menu{
 	width: 100%;
 	display: block;
-	background-color: #E3E6DA;
+	background-color: #c4bebe;
 	white-space: normal;
 	opacity: 0;
 
@@ -120,6 +217,7 @@ banner
 	.navbar-collapse {
 		background: rgba(28,74,90, 0.9);
 	}
+
 }
 
 .top-nav-collapse {
@@ -162,14 +260,14 @@ banner
 	background-color: rgb(184, 12, 115) !important;
 }
 #banner{
-	background: url('../img/bg-banner.jpg') no-repeat fixed;
+	background: url('../img/slider1.jpg') no-repeat fixed;
 	background-size: auto;
 	min-height: 650px;
 	position: center;
 }
 
 #banner-other-page{
-	background: url('../img/bg-banner.jpg') no-repeat fixed;
+	background: url('../img/slider1.jpg') no-repeat fixed;
 	background-size: cover;
 	min-height: 300px;
 	position: relative;
@@ -208,6 +306,92 @@ banner
 	padding-top: 8px;
 	display: inline-block;
 }
+
+/*---------------------------------------
+      HOME
+  -----------------------------------------*/
+
+#home h1 {
+	color: #ffffff;
+	padding-bottom: 10px;
+	margin-top: 0;
+}
+
+#home h3 {
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: inherit;
+	letter-spacing: 3px;
+	text-transform: uppercase;
+	margin: 0;
+}
+
+.slider .container {
+	width: 100%;
+}
+
+.slider .owl-dots {
+	position: absolute;
+	top: 575px;
+	width: 100%;
+	justify-content: center;
+}
+
+.owl-theme .owl-dots .owl-dot span {
+	width: 8px;
+	height: 8px;
+	margin: 5px 7px;
+	border: 2px solid #d9d9d9;
+	background: transparent;
+	display: block;
+	-webkit-backface-visibility: visible;
+	transition: opacity 200ms ease;
+	border-radius: 30px;
+}
+
+.owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
+	background-color: #ffffff;
+	border-color: transparent;
+}
+
+.slider .caption {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	text-align: center;
+	background-color: rgba(20,20,20,0.2);
+	height: 100%;
+	color: #fff;
+	cursor: e-resize;
+}
+
+.slider .item {
+	background-position:inherit;
+	background-repeat: no-repeat;
+	background-attachment: local;
+	background-size: cover;
+	height: 650px;
+}
+
+.slider .item-first {
+	background-image: url(../img/slider1.jpg);
+	background-position: bottom;
+}
+
+.slider .item-second {
+	background-image: url(../img/slider2.jpg);
+}
+
+.slider .item-third {
+	background-image: url(../img/slider3.jpg);
+	background-position:bottom;
+	background-size: cover;
+
+
+}
+
+
 /***************************************
 services
 ***************************************/
@@ -363,6 +547,11 @@ Card layout
 	-moz-animation: icon_anm 2s infinite;
 	-webkit-animation: icon_anm 2s infinite;
 	animation: icon_anm 2s infinite;
+}
+@media (min-width: 1200px) {
+	.container{
+		max-width: 100%;
+	}
 }
 
 @keyframes icon_anm {
