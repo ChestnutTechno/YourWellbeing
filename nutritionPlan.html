@@ -12,6 +12,7 @@
   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
 
   <style type="text/css">
     .olli {
@@ -184,17 +185,21 @@
   </div>
 <div class="container">
   <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4">
-      <div class="card text-center" style="border-radius: 46px;" onclick="$('#calculator').css('display','block')">
-        <p>Check your BMR right now!</p>
+    <div class="col-md-3"></div>
+    <div class="col-md-3">
+      <div class="card text-center" style="border-radius: 46px;" onclick="$('#calculator').fadeToggle()">
+        <p>BMR calculator</p>
       </div>
     </div>
-    <div class="col-md-4"></div>
+    <div class="col-md-3">
+      <div class="card text-center" style="border-radius: 46px;" onclick="$('#energy_calculator').fadeToggle()">
+        <p>Energy calculator</p>
+      </div>
+    </div>
+    <div class="col-md-3"></div>
   </div>
-  <div id = "calculator" class="row" style="display: none;margin: 30px;">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
+  <div class="row"  >
+    <div id = "calculator" class="col-sm-6" style="display: none;margin: 30px;">
       <div style="box-shadow: 0 0 11px rgba(33,33,33,.2);border-radius: 30px;padding-bottom: 20px;">
         <table id="bmr_cal">
           <tr>
@@ -230,7 +235,48 @@
         <div id = "res" class="text-center"></div>
       </div>
     </div>
-    <div class="col-sm-3"></div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div id = "energy_calculator" class="col-md-8" style="margin: 30px;">
+        <div class="ui-widget" style="box-shadow: 0 0 11px rgba(33,33,33,.2);border-radius: 30px;padding-bottom: 20px;">
+          <input id="food_name" type="text" placeholder="Enter a food name to search" style="width: 250px;margin: 20px"/>
+          <input id="volume" type="number" placeholder="Amount" style="width: 250px;margin: 20px"/>
+          <span style="font-family: Raleway;font-size: 16px;color: #2d2b29;margin-left: -55px">g</span>
+          <br>
+          <div style="margin-left: 30px;">
+            <button id = "insert_food" type="submit" class="btn-default" style="width: 150px;height: 40px; border-radius: 20px;color: #2d2b29;">Add</button>
+            <button type="submit" class="btn-danger" style="width: 150px;height: 40px; border-radius: 20px;color: #2d2b29;">Clear</button>
+          </div>
+          <div style="margin: 20px 20px 20px;">
+            <table id = "food_table" class="table">
+              <tr>
+                <th>Food name</th>
+                <th>Amount</th>
+                <th>Energy</th>
+                <th>Protein</th>
+                <th>Fat</th>
+                <th>Carbs</th>
+                <th>Delete</th>
+              </tr>
+            </table>
+          <div style="width: 200px">
+            <table class="table">
+              <tr><td><h4>Energy:</h4></td>
+                <td><h4 id="energy_val">0 KJ</h4></td></tr>
+              <tr><td><h4>Protein:</h4></td>
+                <td><h4 id="protein_val">0 g</h4></td></tr>
+              <tr><td><h4>Carbs:</h4></td>
+              <td><h4 id="carb_val">0 g</h4></td></tr>
+              <tr><td><h4>Fat:</h4></td>
+                <td><h4 id="fat_val">0 g</h4></td></tr>
+            </table>
+          </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -260,6 +306,8 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
 
 <!-- BMR calculator -->
 <script type="text/javascript">
@@ -280,6 +328,7 @@ $('#submit_btn').click(function(){
       result = 447.593 + (9.247 * wei) + (3.098 * hei) - (4.330 * age);
     }
     let resultKJ = result * 4.184;
+    $("#res").empty();
     $("#res").append("<p>Your daily intake: </p>")
             .append("<h3>" + result.toFixed(2) + " Calories / day</h3>")
             .append("<h4>OR</h4>")
@@ -336,6 +385,85 @@ $('#submit_btn').click(function(){
   }
 </script>
 
+<!-- get autocomplete arrays -->
+<script type="text/javascript">
+  var availableTags = [];
+  xHttp = new XMLHttpRequest();
+  xHttp.onreadystatechange = function (){
+    if(this.readyState == 4 && this.status == 200){
+      availableTags.push.apply(availableTags, this.responseText.split("|"))
+    }
+  }
+  xHttp.open("GET", "/php/getFood.php", true);
+  xHttp.send();
+
+  $("#food_name").autocomplete({
+    source: function(request, response) {
+      var results = $.ui.autocomplete.filter(availableTags, request.term);
+
+      response(results.slice(0, 10));
+    }
+  })
+</script>
+
+<!-- insert food -->
+<script>
+  //add interaction to trash bin icons for deleting a row
+  $("#food_table").on("click", ".fa-trash-o", function (){
+    var energy = parseFloat($("#energy_val").html().split(" ")[0])
+    var de_eng = parseFloat($(this).closest("tr").find(".energy_cell").html().split(" ")[0]);
+    var protein = parseFloat($("#protein_val").html().split(" ")[0])
+    var de_pro = parseFloat($(this).closest("tr").find(".protein_cell").html().split(" ")[0]);
+    var carbs = parseFloat($("#carb_val").html().split(" ")[0])
+    var de_carbs = parseFloat($(this).closest("tr").find(".carbs_cell").html().split(" ")[0]);
+    var fat = parseFloat($("#fat_val").html().split(" ")[0])
+    var de_fat = parseFloat($(this).closest("tr").find(".fat_cell").html().split(" ")[0]);
+
+    $("#energy_val").text((energy - de_eng) + " KJ");
+    $("#protein_val").text((protein - de_pro) + " g");
+    $("#fat_val").text((fat - de_fat) + " g");
+    $("#carb_val").text((carbs - de_carbs) + " g");
+    console.log(energy);
+    console.log(de_eng);
+
+
+    $(this).closest("tr").remove();
+  });
+
+  $("#insert_food").click(function (){
+    const name = $("#food_name").val();
+    const amount = $("#volume").val();
+    if(name.length == 0 || amount == 0){
+      alert("Food name or amount can not be empty");
+      return;
+    }
+    x = new XMLHttpRequest();
+    x.open("GET", "/php/searchOneFood.php?n=" + name + "&a=" + amount, true);
+    x.onreadystatechange = function (){
+      if(this.readyState == 4 && this.status == 200){
+        var list = this.responseText.split("|");
+        $("#food_table").append("<tr><td>" + list[0] + "</td>" +
+                "<td>" + list[1] + " g</td>" +
+                "<td class='energy_cell'>" + parseFloat(list[2]) + " KJ</td>" +
+                "<td class='protein_cell'>" + parseFloat(list[3]) + " g</td>" +
+                "<td class='fat_cell'>" + parseFloat(list[4]) + " g</td>" +
+                "<td class='carbs_cell'>" + parseFloat(list[5]) + " g</td>" +
+                '<td><i class="fa fa-trash-o" aria-hidden="true"></i></td></tr>');
+        var updated_eng = parseFloat($("#energy_val").text().split(" ")[0]) + parseFloat(list[2]);
+        var updated_pro = parseFloat($("#protein_val").text().split(" ")[0]) + parseFloat(list[3]);
+        var updated_fat = parseFloat($("#fat_val").text().split(" ")[0]) + parseFloat(list[4]);
+        var updated_car = parseFloat($("#carb_val").text().split(" ")[0]) + parseFloat(list[5]);
+        $("#energy_val").text(updated_eng + " KJ");
+        $("#protein_val").text(updated_pro + " g");
+        $("#fat_val").text(updated_fat + " g");
+        $("#carb_val").text(updated_car + " g");
+        $("#food_name").val("");
+      }
+    }
+
+    x.send();
+  });
+</script>
 </body>
 
 </html>

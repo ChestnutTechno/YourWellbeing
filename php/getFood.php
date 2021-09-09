@@ -1,15 +1,17 @@
 <?php
 // SQL Server Extension Sample Code:
-$connectionInfo = array("UID" => "genered", "pwd" => "TA38_yourwellbeing", "Database" => "genered_db", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-$serverName = "tcp:yw-db.database.windows.net,1433";
-$conn = sqlsrv_connect($serverName, $connectionInfo);
-    $tsql= "SELECT TOP 20 f.food_name FROM [dbo].[Food] f";
-    $getResults= sqlsrv_query($conn, $tsql);
-    echo ("Reading data from table" . PHP_EOL);
-    if ($getResults == FALSE)
-        echo (sqlsrv_errors());
-    while ($row = sqlsrv_fetch_array($getResults, SQLSRV_FETCH_ASSOC)) {
-     echo ($row['food_name'] . PHP_EOL);
+$conn = new mysqli("your-wellbeing.mysql.database.azure.com", "genered@your-wellbeing", "TA38_yourwellbeing", "ywbdb");
+if($conn->connect_error) {
+    exit('Could not connect');
+}
+
+$sql = "SELECT food_id, food_name FROM ywbdb.food";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        echo $row["food_name"] . "|";
     }
-    sqlsrv_free_stmt($getResults);
+}
+
 ?>
