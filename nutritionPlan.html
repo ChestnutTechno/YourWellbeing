@@ -246,19 +246,23 @@
           <br>
           <div style="margin-left: 30px;">
             <button id = "insert_food" type="submit" class="btn-default" style="width: 150px;height: 40px; border-radius: 20px;color: #2d2b29;">Add</button>
-            <button type="submit" class="btn-danger" style="width: 150px;height: 40px; border-radius: 20px;color: #2d2b29;">Clear</button>
+            <button id = "clr_btn" type="submit" class="btn-danger" style="width: 150px;height: 40px; border-radius: 20px;color: #2d2b29;">Clear</button>
           </div>
           <div style="margin: 20px 20px 20px;">
             <table id = "food_table" class="table">
-              <tr>
-                <th>Food name</th>
-                <th>Amount</th>
-                <th>Energy</th>
-                <th>Protein</th>
-                <th>Fat</th>
-                <th>Carbs</th>
-                <th>Delete</th>
-              </tr>
+              <thead>
+                <tr>
+                  <th>Food name</th>
+                  <th>Amount</th>
+                  <th>Energy</th>
+                  <th>Protein</th>
+                  <th>Fat</th>
+                  <th>Carbs</th>
+                  <th>Delete</th>
+                </tr>
+              </thead>
+              <tbody>
+              </tbody>
             </table>
           <div style="width: 200px">
             <table class="table">
@@ -423,12 +427,18 @@ $('#submit_btn').click(function(){
     $("#protein_val").text((protein - de_pro) + " g");
     $("#fat_val").text((fat - de_fat) + " g");
     $("#carb_val").text((carbs - de_carbs) + " g");
-    console.log(energy);
-    console.log(de_eng);
-
-
     $(this).closest("tr").remove();
   });
+
+
+
+  $("#clr_btn").click(function(){
+    $("#food_table > tbody").empty();
+    $("#energy_val").text("0 KJ");
+    $("#protein_val").text("0 g");
+    $("#carb_val").text("0 g");
+    $("#fat_val").text("0 g");
+  })
 
   $("#insert_food").click(function (){
     const name = $("#food_name").val();
@@ -442,7 +452,7 @@ $('#submit_btn').click(function(){
     x.onreadystatechange = function (){
       if(this.readyState == 4 && this.status == 200){
         var list = this.responseText.split("|");
-        $("#food_table").append("<tr><td>" + list[0] + "</td>" +
+        $("#food_table > tbody").append("<tr id='food_row'><td>" + list[0] + "</td>" +
                 "<td>" + list[1] + " g</td>" +
                 "<td class='energy_cell'>" + parseFloat(list[2]) + " KJ</td>" +
                 "<td class='protein_cell'>" + parseFloat(list[3]) + " g</td>" +
@@ -458,6 +468,7 @@ $('#submit_btn').click(function(){
         $("#fat_val").text(updated_fat + " g");
         $("#carb_val").text(updated_car + " g");
         $("#food_name").val("");
+        $("#volume").val("");
       }
     }
 
