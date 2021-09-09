@@ -181,6 +181,12 @@ header span i {
 .navbar {
 	border-radius: 0px;
 }
+.navbar-brand-logo img{
+	font-family: 'Candal', sans-serif;
+	font-size: 35px;
+
+	width: 120px !important;
+}
 
 .navbar-brand
 {
@@ -201,7 +207,7 @@ header span i {
 .dropdown .dropdown-menu{
 	width: 100%;
 	display: block;
-	background-color: #c4bebe;
+	background-color: #dbd4d3;
 	white-space: normal;
 	opacity: 0;
 
@@ -227,7 +233,7 @@ header span i {
 
 .white, .white:hover, .white:focus
 {
-	color: black;
+	color: #ded9d9;
 	width: 100% !important;
 }
 .block
@@ -242,15 +248,16 @@ header span i {
 .navbar-default .navbar-nav > li > a
 {
 	color: #000000;
+	font-weight: bold;
 	text-transform: uppercase;
 	font-size: 14px;
-	font-weight: 300;
+
 }
 .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus
 {
 	color: #020202;
 	text-transform: uppercase;
-	background-color: rgb(151, 156, 148);
+	background-color: rgb(191, 196, 191);
 }
 .affix {
 	background-color: #ffffff !important;
@@ -266,12 +273,13 @@ header span i {
 	position: center;
 }
 
-#banner-other-page{
+#otherPageBackground{
 	background: url('../img/slider1.jpg') no-repeat fixed;
-	background-size: cover;
+	background-size: auto;
 	min-height: 300px;
-	position: relative;
+	position: center;
 }
+
 .bg-color{
 	background-color: RGBA(173, 211, 117, 0);
 	min-height: 500px;
@@ -380,11 +388,11 @@ header span i {
 }
 
 .slider .item-second {
-	background-image: url(../img/slider2.jpg);
+	background-image: url(../img/slider3.jpg);
 }
 
 .slider .item-third {
-	background-image: url(../img/slider3.jpg);
+	background-image: url(../img/slider2.jpg);
 	background-position:bottom;
 	background-size: cover;
 
