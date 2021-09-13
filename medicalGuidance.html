@@ -12,7 +12,7 @@
     <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-
+    <link rel="icon" href="/img/favicon.ico">
 </head>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
@@ -141,7 +141,7 @@
                             <tr>
                                 <th>OSCH providers</th>
                                 <td>&nbsp;&nbsp;<img src="img/insurance/ahm.png"> </td>
-                                <td><br><img src="img/insurance/allianz.png" </td>
+                                <td><br><img src="img/insurance/allianz.png"></td>
                                 <td><img src="img/insurance/bupa.png"> </td>
                                 <td><img src="img/insurance/cbhs.png"> </td>
                                 <td><br><img src="img/insurance/medibank.png"> </td>
@@ -217,10 +217,10 @@
         </div>
         <div class="row">
 
-            <div class="col-sm-11">
+            <div class="col-sm-12">
                 <center><h3>Online appointment booking platform</h3></center>
                 <div class="col-sm-6">
-                    <div id = "hot_doc" class="card text-center">
+                    <div id = "hot_doc" class="card text-center" onclick="window.open('https://www.hotdoc.com.au','_blank')">
                         <br><br><br>
                     </div>
                 </div>
@@ -230,11 +230,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-sm-1">
-                <div>
-                    <a href="#"><i class="fa fa-angle-double-up fa-lg"></i></a>
-                </div>
-            </div>
+
         </div>
     </div>
 
@@ -262,18 +258,6 @@
 <script src="js/custom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.js"></script>
-<script type="text/javascript">
-    $('#hot_doc').click(function(){
-        let base_url = "https://www.hotdoc.com.au/search?around="
-        navigator.geolocation.getCurrentPosition(function (position){
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-            console.log(lat + ',' + lon);
-            let dest = base_url + lat + "%2C" + lon;
-            window.open(dest, '_blank');
-        })
-    })
-</script>
 </body>
 
 </html>
