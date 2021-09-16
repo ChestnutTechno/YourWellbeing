@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your Wellbeing | Medical Guidance</title>
+  <meta name="description" content="Free Bootstrap Theme by BootstrapMade.com">
+  <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
+
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+  <link rel="icon" href="/img/favicon.ico">
+  <link href="https://cdn.bootcss.com/bootstrap-select/1.12.1/css/bootstrap-select.min.css" rel="stylesheet">
+
+  <style type="text/css">
+    .olli {
+      color: #222222;
+      font-weight: bold;
+    }
+  </style>
+
+
+</head>
+
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+<!--banner-->
+<section id="otherPageBackground" class="banner">
+  <div style="background-color: RGBA(173, 211, 117, 0); min-height: 300px">
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="col-md-12">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand-logo" href="index.html"><img src="img/logo.png" alt="image"></a>
+          </div>
+          <div class="collapse navbar-collapse navbar-right" id="myNavbar">
+            <ul class="nav navbar-nav">
+              <li><a href="index.html" style="font-weight: bold">Home</a></li>
+              <li class="dropdown"><a href="mentalHealth.html" class="dropdown-toggle" style="font-weight: bold">Mental Health intro</a>
+                <ul class="dropdown-menu">
+                  <li><a href="mentalHealth.html#mi" style="font-weight: bold">Mental health</a></li>
+                  <li><a href="mentalHealth.html#cb" style="font-weight: bold">Stress level testing</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="medicalGuidance.html" class="dropdown-toggle" style="font-weight: bold">Medical Guidance</a>
+                <ul class="dropdown-menu">
+                  <li><a href="medicalGuidance.html#mi" style="font-weight: bold">Mental support</a></li>
+                  <li><a href="medicalGuidance.html#cb" style="font-weight: bold">How to claim</a></li>
+                  <li><a href="medicalGuidance.html#ma" style="font-weight: bold">How to visit GPs</a></li>
+                </ul>
+              </li>
+              <li class="dropdown active"><a href="nutritionPlan.html" class="dropdown-toggle" style="font-weight: bold">&nbsp&nbsp&nbspNutrition Plan&nbsp&nbsp&nbsp</a>
+                <ul class="dropdown-menu">
+                  <li><a href="nutritionPlan.html#Serotonin">Serotonin</a></li>
+                  <li><a href="nutritionPlan.html#nutTab">Nutrients</a></li>
+                  <li><a href="nutritionPlan.html#calculatorNavigation">Calculator</a></li>
+                </ul>
+              </li>
+              <li class="dropdown"><a href="exercisePlan.html" class="dropdown-toggle" style="font-weight: bold">&nbsp&nbsp&nbsp&nbspExercise Plan&nbsp&nbsp&nbsp&nbsp</a>
+                <ul class="dropdown-menu">
+                  <li><a href="meditation.html">Meditation</a></li>
+                  <li><a href="yoga.html">Yoga</a></li>
+                </ul>
+              </li>
+              <!--                            <li class=""><a href="404.html">About us</a></li>-->
+            </ul>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</section>
+<!--/ banner-->
+
+<section class="section-padding">
+  <div class="container-lg">
+    <div class="row">
+      <div align="center">
+        <h1 class="ser-title" style="font-size: 40px">Recreation Map</h1>
+        <h5 style="color: #999999">Where you can go for recreation</h5>
+        <hr class="botm-line">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-1"></div>
+      <div class="col-md-7">
+        <div id="map" style="height: 100%"></div>
+      </div>
+      <div class="col-md-3"></div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+</section>
+
+<!--footer-->
+<footer id="footer">
+  <div class="footer-line">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 text-center">
+          © Copyright GeneRed
+          <div class="credits">
+            Designed by <font color="aqua">GeneRed Team</font></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--/ footer-->
+
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+<script type="text/javascript">
+  let map;
+
+  function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+      center: { lat: -34.397, lng: 150.644 },
+      zoom: 8,
+    });
+  }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJuN0z05Nexw23mbnMm9NrgOzBjwxXBko&callback=initMap"></script>
+
+</body>
+
+</html>
