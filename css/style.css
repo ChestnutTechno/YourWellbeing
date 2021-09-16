@@ -268,14 +268,14 @@ header span i {
 }
 #banner{
 	background: url('../img/slider1.jpg') no-repeat fixed;
-	background-size: auto;
+	background-size: cover;
 	min-height: 650px;
 	position: center;
 }
 
 #otherPageBackground{
-	background: url('../img/slider1.jpg') no-repeat fixed;
-	background-size: auto;
+	background: url('../img/slider1.jpg') no-repeat;
+	background-size: cover;
 	min-height: 300px;
 	position: center;
 }
