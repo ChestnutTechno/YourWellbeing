@@ -609,7 +609,24 @@ input{
 /*------------------------------------------------------------------
     Services
 -------------------------------------------------------------------*/
-
+#service1{
+	background-image: url("../img/mentalhealthcard.png");
+	background-position: center;
+	background-size: cover;
+}
+#service2{
+	background-image: url("../img/medicalGuidance.jpg");
+	background-position: center;
+	background-size: cover;
+}#service3{
+	background-image: url("../img/nutritionPlan.jpg");
+	background-position: center;
+	background-size: cover;
+}#service4{
+	background-image: url("../img/exerciseCard.jpg");
+	background-position: center;
+	background-size: cover;
+}
 .services-box{
 	padding: 70px 0px;
 }
