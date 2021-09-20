@@ -87,7 +87,7 @@
             </ul>
         </div>
     </div>
-    <div class="container">
+    <div class="container-lg">
         <div id="mi" class="row">
             <div align="center">
                 <h1 class="ser-title" style="font-size: 40px">Mental Health</h1>
@@ -99,18 +99,32 @@
         </div>
 
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-1"></div>
+            <div class="col-sm-10">
                 <div>
                     <p style="font-family: Raleway;line-height: 2; font-weight: bold">
                         International students encounter a variety of mental illness in Australia.
                     </p>
                     <p style="font-family: Raleway;line-height: 2;">
-                         This videos highlight some of the symptoms and behaviours people may experience due to changes to their situation, stress or isolation, and identify tips and resources available that can provide much needed support.
+                        Meet Toby, an international university student and Headspace volunteer, talking about the importance of working together to get through this challenging time.
                     </p>
-                    <div class="row"><div id="player"></div></div>
                     <br><br><br>
                 </div>
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div id="player"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4" style="background-color: #dbd9db" align="left">
+                        <h3 style="color: #0f0c1c; font-size: 25px;" align="center">Brief Introduction</h3>
+                        <br>
+                        <p style="font-family: Raleway;line-height: 2;text-align: justify">This mental health and wellbeing videos have been developed by the COVID-19 Communications Team, in collaboration with Headspace and the Mental Health Branch, reminding people to look after their mental health during the pandemic. The videos highlight some of the symptoms and behaviours people may experience due to changes to their situation, stress or isolation, and identify tips and resources available that can provide much needed support.    </p></li>
+                        <br><br><br><br><br><br><br>
+                    </div>
+                </div>
             </div>
+            <div class="col-md-1"></div>
         </div>
 
         <hr/>
@@ -124,7 +138,8 @@
 
         </div>
         <div class="row">
-            <div class="col-sm-12">
+            <div class="col-md-1"></div>
+            <div class="col-sm-10">
                 <div >
                     <p style="font-family: Raleway;line-height: 2;">
 
@@ -174,6 +189,7 @@
                 </div>
                 <div class="row" id="resultDiv2" style="display: none;"><p style="font-family: Raleway;line-height: 2;" id="result"></p></div>
             </div>
+            <div class="col-md-1"></div>
         </div>
         <div class="row" id="solution"></div>
     </div>
@@ -387,7 +403,7 @@
     function onYouTubeIframeAPIReady() {
         player = new YT.Player('player', {
             height: '506',
-            width: '900',
+            width: '1000',
             videoId: '4XROOeMr0nE',
             events: {
                 'onReady': onPlayerReady,
