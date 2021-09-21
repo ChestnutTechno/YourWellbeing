@@ -886,6 +886,12 @@ input{
 	.box-gallery{ margin-bottom: 30px; }
 }
 
+#map {
+	height: 700px;
+	width: 1100px;
+	margin: 0 auto;
+}
+
 /***************************************
 footer
 ***************************************/

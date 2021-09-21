@@ -57,7 +57,7 @@
                   <li><a href="medicalGuidance.html#ma" style="font-weight: bold">How to visit GPs</a></li>
                 </ul>
               </li>
-              <li class="dropdown active"><a href="nutritionPlan.html" class="dropdown-toggle" style="font-weight: bold">&nbsp&nbsp&nbspNutrition Plan&nbsp&nbsp&nbsp</a>
+              <li class="dropdown"><a href="nutritionPlan.html" class="dropdown-toggle" style="font-weight: bold">&nbsp&nbsp&nbspNutrition Plan&nbsp&nbsp&nbsp</a>
                 <ul class="dropdown-menu">
                   <li><a href="nutritionPlan.html#Serotonin">Serotonin</a></li>
                   <li><a href="nutritionPlan.html#nutTab">Nutrients</a></li>
@@ -70,6 +70,7 @@
                   <li><a href="yoga.html">Yoga</a></li>
                 </ul>
               </li>
+              <li class="active"><a href="social.html" style="font-weight: bold">Recreation/Volunteering</a></li>
               <!--                            <li class=""><a href="404.html">About us</a></li>-->
             </ul>
           </div>
@@ -90,12 +91,7 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-md-1"></div>
-      <div class="col-md-7">
-        <div id="map" style="height: 100%"></div>
-      </div>
-      <div class="col-md-3"></div>
-      <div class="col-md-1"></div>
+        <div id="map"></div>
     </div>
   </div>
 </section>
@@ -121,17 +117,8 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/custom.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
-<script type="text/javascript">
-  let map;
-
-  function initMap() {
-    map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: -34.397, lng: 150.644 },
-      zoom: 8,
-    });
-  }
-</script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJuN0z05Nexw23mbnMm9NrgOzBjwxXBko&callback=initMap"></script>
+<script src="js/interactiveMap.js"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD-6JkPLtJnBM1fjHhMkAg6OX4M0RfB1po&callback=initMap"></script>
 
 </body>
 
