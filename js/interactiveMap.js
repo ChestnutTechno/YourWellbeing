@@ -1,16 +1,21 @@
 let map;
 let markers = [];
+let tracksLayer;
 function initMap() {
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: -37.9099, lng: 145.1324 },
         zoom: 15,
         mapId: "28c9117c2aa9ddc6",
-        //mapTypeControl: false,
-        //streetViewControl: false
     });
-    const centerControlDiv = document.createElement("div");
-    markersControl(centerControlDiv);
-    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(centerControlDiv);
+
+    // add control divs
+    const markersControlDiv = document.createElement("div");
+    const tracksControlDiv = document.createElement("div");
+    markersControl(markersControlDiv);
+    tracksControl(tracksControlDiv);
+    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(markersControlDiv);
+    map.controls[google.maps.ControlPosition.RIGHT_TOP].push(tracksControlDiv);
+
     addFacilities("data/fac.csv");
     addTracks("data/recweb_track.json");
 }
@@ -91,7 +96,7 @@ function addFacilities(file) {
 }
 
 function addTracks(file) {
-    const tracksLayer = new google.maps.Data();
+    tracksLayer = new google.maps.Data();
     tracksLayer.loadGeoJson(file);
     tracksLayer.setStyle({
        strokeWeight: 5,
@@ -100,10 +105,9 @@ function addTracks(file) {
     tracksLayer.setMap(map);
 }
 
-
-function markersControl(controlDiv) {
+function creatControlUI(controlDiv, innerText){
     // Set CSS for the control border.
-    const controlUI = document.createElement("div");
+    let controlUI = document.createElement("div");
 
     controlUI.style.backgroundColor = "#fff";
     controlUI.style.border = "2px solid #fff";
@@ -111,33 +115,71 @@ function markersControl(controlDiv) {
     controlUI.style.boxShadow = "0 2px 6px rgba(0,0,0,.3)";
     controlUI.style.cursor = "pointer";
     controlUI.style.marginTop = "8px";
-    controlUI.style.marginBottom = "22px";
+    controlUI.style.marginBottom = "8px";
     controlUI.style.marginRight = "10px";
     controlUI.style.textAlign = "center";
     controlDiv.appendChild(controlUI);
 
     // Set CSS for the control interior.
-    const controlText = document.createElement("div");
+    let controlText = document.createElement("div");
 
-    controlText.style.color = "rgb(25,25,25)";
+    controlText.style.color = "rgb(86,86,86)";
     controlText.style.fontFamily = "Roboto,Arial,sans-serif";
-    controlText.style.fontSize = "16px";
+    controlText.style.fontSize = "18px";
     controlText.style.lineHeight = "38px";
     controlText.style.paddingLeft = "5px";
     controlText.style.paddingRight = "5px";
-    controlText.innerHTML = "Hide Facilities";
+    controlText.innerHTML = innerText;
     controlUI.appendChild(controlText);
 
-    var show = true;
+    controlUI.addEventListener("mouseover", function() {
+        controlUI.style.backgroundColor = "#e5e5e5";
+        controlUI.style.border = "2px solid #e5e5e5";
+        controlText.style.color = "rgb(25,25,25)";
+
+    });
+    controlUI.addEventListener("mouseout", function() {
+        controlUI.style.backgroundColor = "#fff";
+        controlUI.style.border = "2px solid #fff";
+        controlText.style.color = "rgb(86,86,86)";
+    })
+    return(controlUI);
+}
+
+
+function markersControl(controlDiv) {
+    const markerControlUI = creatControlUI(controlDiv, "Hide Facilities");
+
+    let show = true;
     // Setup the click event listeners: simply set the map to Chicago.
-    controlUI.addEventListener("click", () => {
+    markerControlUI.addEventListener("click", () => {
+        let nodes = markerControlUI.childNodes;
         if(show){
-            controlText.innerHTML = "Show Facilities";
+            nodes.item(0).innerHTML =  "Show Facilities";
             hideMarkers();
             show = false;
         }else {
-            controlText.innerHTML = "Hide Facilities";
+            nodes.item(0).innerHTML =  "Hide Facilities";
             showMarkers();
+            show = true;
+        }
+    });
+}
+
+function tracksControl(controlDiv){
+    const trackControlUI = creatControlUI(controlDiv, "Hide Tracks");
+
+    let show = true;
+    // Setup the click event listeners: simply set the map to Chicago.
+    trackControlUI.addEventListener("click", () => {
+        let nodes = trackControlUI.childNodes;
+        if(show){
+            nodes.item(0).innerHTML =  "Show Tracks";
+            hideTracks();
+            show = false;
+        }else {
+            nodes.item(0).innerHTML =  "Hide Tracks";
+            showTracks();
             show = true;
         }
     });
@@ -156,6 +198,14 @@ function hideMarkers() {
 
 function showMarkers() {
     setMapOnAll(map);
+}
+
+function hideTracks() {
+    tracksLayer.setMap(null);
+}
+
+function showTracks() {
+    tracksLayer.setMap(map);
 }
 
 
