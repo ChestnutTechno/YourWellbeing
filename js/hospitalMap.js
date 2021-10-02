@@ -1,4 +1,6 @@
 let hospitalMap;
+let userLocation;
+let icon;
 
 function initMap() {
     hospitalMap = new google.maps.Map(document.getElementById("hospital_map"), {
@@ -8,13 +10,21 @@ function initMap() {
         mapTypeControl: false,
         streetViewControl: false
     });
+
+    icon = {
+        url: "img/user_location_icon.png",
+        scaledSize: new google.maps.Size(40, 40),
+        anchor: new google.maps.Point(18, 18)
+    };
+
+    userLocation  = new google.maps.Marker();
     addHospitals("data/hospital.csv");
 
 }
 
 function addHospitals(file) {
     let icon = {
-        url: "img/map_pin_icon.png",
+        url: "img/hospital_icon.png",
         scaledSize: new google.maps.Size(30, 30),
     };
     let rawFile = new XMLHttpRequest();
@@ -84,5 +94,33 @@ function getRealtimeLocation(){
         let lat = position.coords.latitude;
         let lon = position.coords.longitude;
         hospitalMap.panTo(new google.maps.LatLng(lat,lon));
-    })
+        userLocation.setPosition(new google.maps.LatLng(lat,lon));
+        userLocation.setIcon(icon);
+        userLocation.setMap(hospitalMap);
+        hospitalMap.setZoom(13);
+    });
+}
+
+function getAddress() {
+    let addressBox = $("#address").val();
+    if(addressBox == ""){
+        alert("address cannot be empty");
+        return;
+    }
+
+    let geocoder = new google.maps.Geocoder();
+    geocoder.geocode( { 'address': addressBox}, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            var lat = results[0].geometry.location.lat();
+            var lon = results[0].geometry.location.lng();
+
+            hospitalMap.panTo(new google.maps.LatLng(lat, lon));
+            userLocation.setPosition(new google.maps.LatLng(lat, lon));
+            userLocation.setIcon(icon);
+            userLocation.setMap(hospitalMap);
+            hospitalMap.setZoom(13);
+        } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+        }
+    });
 }
