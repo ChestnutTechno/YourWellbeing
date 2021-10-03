@@ -86,7 +86,7 @@
             </ul>
         </div>
     </div>
-    <div class="container">
+    <div class="container-lg">
         <div id="mi" class="row">
             <div align="center">
                 <h1 class="ser-title" style="font-size: 40px">Mental illness</h1>
@@ -100,11 +100,11 @@
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
                 <div>
-                    <div class="card" id="mentalIllness_img" style="margin-left: 100px;margin-right: 100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
+                    <div class="card" id="mentalIllness_img" style="height: 600px;margin-left: 100px;margin-right: 100px;"><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>
                     <br><br>
-                    <div class="text-center urgent">
-                        <p>If you are experiencing mental distress</p>
-                        <p>or need urgent medical assistance, please directly call 000</p>
+                    <div class="text-center " align="center">
+                        <p style="font-family: Raleway;ont-size: 20px;line-height: 2;color: #222222;font-weight: bold;text-transform: uppercase;">If you are experiencing mental distress</p>
+                        <p style="font-family: Raleway;ont-size: 20px;line-height: 2;color: #222222;font-weight: bold;text-transform: uppercase;">or need urgent medical assistance, please directly call 000</p>
 
                     </div>
                     <p style="font-family: Raleway;line-height: 2;">
@@ -223,27 +223,28 @@
             </div>
         </div>
         <div class="row">
-
-            <div class="col-sm-5">
+            <div class="col-md-1"></div>
+            <div class="col-sm-4">
                 <center><h3>Online appointment booking platform</h3></center>
                 <div class="row">
-                    <div id = "hot_doc" class="card text-center" onclick="window.open('https://www.hotdoc.com.au','_blank')">
+
+                    <div id = "hot_doc" style="width: 600px; height: 160px;" class="card text-center" onclick="window.open('https://www.hotdoc.com.au','_blank')">
                         <br><br><br>
                     </div>
-                </div>
-                <div class="row">
-                    <div id="healthEngine" class="card text-center" onclick="window.open('https://healthengine.com.au/','_blank')">
+                    <div id="healthEngine" style="width: 600px;height: 160px" class="card text-center" onclick="window.open('https://healthengine.com.au/','_blank')">
                         <br><br><br>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-7">
+            <div class="col-sm-6">
                 <center><h3>Hospital map</h3></center>
                 <input id="address" class="card" style="padding: 0 0 0 10px;margin-left:0;height: 40px;width: 80%;color:#0f0c1c;"type="text" placeholder="Address">
                 <span onclick="getRealtimeLocation()" style="margin-left: -50px;margin-right: 30px"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
                 <button id="sub_add" class="submit_tbn" onclick="getAddress()" style="width: 115px">Search</button>
                 <div id="hospital_map"></div>
             </div>
+            <div class="col-md-1"></div>
+
 
         </div>
     </div>

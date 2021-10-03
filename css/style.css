@@ -610,20 +610,20 @@ input{
     Services
 -------------------------------------------------------------------*/
 #service1{
-	background-image: url("../img/mentalhealthcard.png");
+	background-color: #b8f5dd;
 	background-position: center;
 	background-size: cover;
 }
 #service2{
-	background-image: url("../img/medicalGuidance.jpg");
+	background-color: #b8f5dd;
 	background-position: center;
 	background-size: cover;
 }#service3{
-	background-image: url("../img/nutritionPlan.jpg");
+	 background-color: #b8f5dd;
 	background-position: center;
 	background-size: cover;
 }#service4{
-	background-image: url("../img/exerciseCard.jpg");
+	  background-color: #b8f5dd;
 	background-position: center;
 	background-size: cover;
 }

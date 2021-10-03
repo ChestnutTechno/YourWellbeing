@@ -85,6 +85,29 @@
   </div>
 </section>
 <!--/ banner-->
+<section class="section-padding">
+  <div class="container-lg">
+    <div class="col-md-1"></div>
+    <div class="col-md-10">
+      <div align="center">
+        <h1 class="ser-title" style="font-size: 40px">Do you know?</h1>
+        <h5 style="color: #999999">Recreational activity and mental health</h5>
+        <hr class="botm-line">
+      </div>
+      <br><br>
+      <div class="col-lg-6">
+        <p style="font-family: Raleway;line-height: 2;">
+          <br>A review of current literature indicates that people who participate in sports clubs and organised recreational activity enjoy better mental health, are more alert, and more resilient against the stresses of modern living. Participation in recreational groups and socially supported physical activity is shown to reduce stress, anxiety and depression, and reduce symptoms of Alzheimer’s disease. Violent crime also decreases significantly when participation in community activities increases.1 More people undertake voluntary work for sports and physical recreation organisations in Australia (1.1 million) to support participation in sport and recreation activity, than are employed in the industry (83,008).2 Links between obesity, depression and physical inactivity are also briefly examined.
+        </p>
+      </div>
+      <div class="col-lg-6">
+        <div id="echart1" style="width: 600px;height:400px;"></div>
+      </div>
+
+    <div class="col-md-1"></div>
+
+
+</section>
 
 <section class="section-padding">
   <div class="container-lg">
@@ -135,7 +158,75 @@
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 <script src="js/interactiveMap.js"></script>
 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoZMuCqbKD-xyGxWT2Tl5p1Tq_1cXuDJs&callback=initMap"></script>
+<script src="js/echarts.js"></script>
+<script type="text/javascript">
+  var myChart1 = echarts.init(document.getElementById('echart1'));
+  option = {
+    backgroundColor: '#ffffff',
+    title: {
+      text: 'Average time spent on recreation in Australia',
+      left: 'center',
+      top: 20,
+      textStyle: {
+        color: '#000000'
+      }
+    },
+    tooltip: {
+      trigger: 'item'
+    },
+    visualMap: {
+      show: false,
+      min: 0,
+      max: 30,
+      inRange: {
+        colorLightness: [0, 1]
+      }
+    },
+    series: [
+      {
+        name: 'Access From',
+        type: 'pie',
+        radius: '55%',
+        center: ['50%', '50%'],
+        data: [
+          { value: 17, name: 'Walking' },
+          { value: 24, name: 'Swimming' },
+          { value: 14, name: 'Meditation' },
+          { value: 13, name: 'Reading' },
+          { value: 8, name: 'Rlaying games' },
+          { value: 10, name: 'Dncing' },
+          { value: 16, name: 'Other recreation and leisure' },
 
+        ].sort(function (a, b) {
+          return a.value - b.value;
+        }),
+        roseType: 'radius',
+        label: {
+          color: 'rgba(0,0,0,0.3)'
+        },
+        labelLine: {
+          lineStyle: {
+            color: 'rgba(0,0,0,0.3)'
+          },
+          smooth: 0.2,
+          length: 10,
+          length2: 20
+        },
+        itemStyle: {
+          color: '#e28583',
+          shadowBlur: 200,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        animationType: 'scale',
+        animationEasing: 'elasticOut',
+        animationDelay: function (idx) {
+          return Math.random() * 200;
+        }
+      }
+    ]
+  };
+  myChart1.setOption(option);
+</script>
 </body>
 
 </html>
