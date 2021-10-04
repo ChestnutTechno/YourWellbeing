@@ -3,22 +3,99 @@
 
 <head>
     <link rel="icon" href="/img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+    <link rel="icon" href="/img/favicon.ico">
+    <link href="https://cdn.bootcss.com/bootstrap-select/1.12.1/css/bootstrap-select.min.css" rel="stylesheet">
+    <style>
+        .container {
+            height: 900px;
+            position: relative;
+        }
+        .center {
+            margin: 0;
+            padding: 10px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            background-color: #fafafa;
+            border: 2px solid #0f0c1c;
+            border-radius: 20px;
+            width: 400px;
+            height: 300px;
+        }
+
+        #pwd {
+            margin-top: 30px;
+            margin-left: 40px;
+            padding: 0 0 0 10px;
+            height: 50px;
+            width: 80%;
+            border: 1px solid #0f0c1c;
+        }
+
+        #btn {
+            transition: .3s;
+            margin-top: 10px;
+            margin-left: 40px;
+            padding-left: 10px;
+            height: 50px;
+            width: 80%;
+            border: 1px solid #0f0c1c;
+            background-color: #0f0c1c;
+        }
+
+        #btn:hover {
+            background-color: #fafafa;
+            color: #0f0c1c;
+            transition: .3s;
+        }
+
+        .error {
+            position: relative;
+            animation: shake .1s linear;
+            animation-iteration-count: 3;
+        }
+        
+        @keyframes shake {
+            0% {left: 0px;}
+            25% {left: 5px;}
+            50% {left: 0px;}
+            75% {left: -5px;}
+            100% {left: 0px;}
+        }
+
+        #alert {
+            margin-top: 10px;
+            margin-left: 40px;
+            color: #c42d2d;
+        }
+
+
+    </style>
 </head>
 
-<body style="background-color: rgb(144, 176, 95);">
+<body style="background-color: #fafafa;">
 
-<script type="text/javascript">
-    window.onload = function (){
-        while(true) {
-            let pwd = prompt("Password required (case sensitive)", "");
-            const p = "TA38_genered";
-            if (pwd === p){
-                window.location.assign("index.html")
-                break;
-            }
-        }
-    }
-</script>
+
+<div class="container">
+    <div class="center">
+        <h3 align="center">Please enter the password to the Your Wellbeing website</h3>
+        <input type="password" id="pwd" class="card" placeholder="Password here">
+        <button class="submit_tbn" id = "btn" onclick="doAuthentication()">GO</button>
+    </div>
+</div>
+
+<script type="text/javascript" src="js/landingVerification.js"></script>
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/custom.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 
 </body>
 
