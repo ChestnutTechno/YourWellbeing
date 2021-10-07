@@ -6,8 +6,13 @@ let destination;
 let userLocation;
 let directionsService;
 let directionsRenderer;
+let infowindow;
+let sitesInfoWindow;
+let tracksInfoWindow;
+let result;
 
 function initMap() {
+    //initiating google map
     map = new google.maps.Map(document.getElementById("map"), {
         center: { lat: -37.9099, lng: 145.1324 },
         zoom: 15,
@@ -15,21 +20,18 @@ function initMap() {
         mapId: "28c9117c2aa9ddc6"
     });
 
+    // get user real-time location
     getRealtimeLocation();
 
+    // initiating the icon for user's location
     icon = {
         url: "img/user_location_icon.png",
         scaledSize: new google.maps.Size(40, 40),
         anchor: new google.maps.Point(18, 18)
     };
-    var dst_icon = {
-        url: "img/map_pin_icon.png",
-        scaledSize: new google.maps.Size(40, 40)
-    }
 
+    // initiating a marker for user's location
     userLocation  = new google.maps.Marker();
-    destination = new google.maps.Marker();
-    destination.setIcon(dst_icon);
 
     // add control divs
     const markersControlDiv = document.createElement("div");
@@ -45,6 +47,16 @@ function initMap() {
     map.controls[google.maps.ControlPosition.RIGHT_TOP].push(tracksControlDiv);
     map.controls[google.maps.ControlPosition.RIGHT_TOP].push(sitesControlDiv);
 
+    // add data layers
+    addFacilities("data/fac.csv");
+    addTracks("data/recweb_track.json");
+    addSites("data/recweb_site.json");
+
+    // nav result
+    result = document.getElementById('nav_result');
+    map.controls[google.maps.ControlPosition.LEFT_CENTER].push(result);
+
+
     // add legend
     let legend = document.getElementById('legend');
     let facilityLgd = document.createElement("div");
@@ -53,21 +65,32 @@ function initMap() {
     facilityLgd.innerHTML = '<img src="img/map_pin_icon.png" style="width: 30px;height: 30px;"><span>Sport Facility</span>';
     siteLgd.innerHTML = '<img src="img/mountain_icon.png" style="width: 30px;height: 30px;"><span>Recreation site</span>';
     trackLgd.innerHTML = '<svg height="30px" width="30px"><line x1="5" y1="25" x2="25" y2="25" style="stroke:#e08600;stroke-width:10;stroke-linecap: round"/></svg><span>Cycling/Walking track</span>'
-
     legend.appendChild(facilityLgd);
     legend.appendChild(siteLgd);
     legend.appendChild(trackLgd);
     map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(legend);
+    map.addListener('center_changed', () => {
+        legend.style.display = 'block';
+    })
 
-    addFacilities("data/fac.csv");
-    addTracks("data/recweb_track.json");
-    addSites("data/recweb_site.json");
-
+    // initiating direction service and direction renderer
     directionsService = new google.maps.DirectionsService();
     directionsRenderer = new google.maps.DirectionsRenderer({
         map,
         panel: document.getElementById("panel"),
     });
+
+    map.addListener("click", () => {
+        result.style.display = 'none';
+        infowindow.close();
+        sitesInfoWindow.close();
+        tracksInfoWindow.close();
+        directionsRenderer.set('directions', null);
+        showMarkers();
+        sitesLayer.setMap(map);
+        tracksLayer.setMap(map);
+        destination.setMap(null);
+    })
 
 
 }
@@ -121,7 +144,7 @@ function addFacilities(file) {
                         '<span class="nav_icon" id="drive" style="margin: 0 10px 0 10px"><i class="fas fa-car fa-2x"></i></span><br>' +
                         '</div>'
 
-                    let infowindow = new google.maps.InfoWindow({
+                    infowindow = new google.maps.InfoWindow({
                         content: contentString,
                     });
 
@@ -145,34 +168,28 @@ function addFacilities(file) {
                         $("#walk").on("click", function() {
                             infowindow.close();
                             hideMarkers();
-                            destination.setPosition(latLng);
-                            destination.setMap(map);
-                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), latLng, google.maps.TravelMode.WALKING);
+                            sitesLayer.setMap(null);
+                            tracksLayer.setMap(null);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), infowindow.getPosition(), google.maps.TravelMode.WALKING);
+                            result.style.display = 'block';
                         })
                         $("#transit").on("click", function(){
                             infowindow.close();
                             hideMarkers();
-                            destination.setPosition(latLng);
-                            destination.setMap(map);
-                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), latLng, google.maps.TravelMode.TRANSIT);
+                            sitesLayer.setMap(null);
+                            tracksLayer.setMap(null);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), infowindow.getPosition(), google.maps.TravelMode.TRANSIT);
+                            result.style.display = 'block';
                         });
                         $("#drive").on("click", function(){
                             infowindow.close();
                             hideMarkers();
-                            destination.setPosition(latLng);
-                            destination.setMap(map);
-                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), latLng, google.maps.TravelMode.DRIVING);
+                            sitesLayer.setMap(null);
+                            tracksLayer.setMap(null);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), infowindow.getPosition(), google.maps.TravelMode.DRIVING);
+                            result.style.display = 'block';
                         });
                     })
-
-                    map.addListener("click", () => {
-                        infowindow.close();
-                        directionsRenderer.set('directions', null);
-                        marker.setMap(map);
-                        destination.setMap(null);
-                    })
-
-
                 }
             }
         }
@@ -189,27 +206,50 @@ function addTracks(file) {
 
     });
 
-    let tracksInfoWindow = new google.maps.InfoWindow();
+    tracksInfoWindow = new google.maps.InfoWindow();
 
-    tracksLayer.addListener("mouseover", function(event) {
+    tracksLayer.addListener("click", function(event) {
         tracksLayer.setStyle({strokeWeight: 8, strokeColor: "#e08600"});
-        let contentString = '<span style="color: #0f0c1c">' + event.feature.getProperty("NAME") + '</span>';
+        let contentString =
+            '<div>' +
+            '<span style="font-weight:bold;color: #0f0c1c">Track Name: </span><span style="color: #0f0c1c">' + event.feature.getProperty("NAME") + '</span><br><br>' +
+            '<span style="font-weight:bold;color: #0f0c1c">Choose your prefered way to get here: </span><br><br>' +
+            '<span class="nav_icon" id="walk" style="margin: 0 10px 0 10px"><i class="fas fa-walking fa-2x"></i></span>' +
+            '<span class="nav_icon" id="transit" style="margin: 0 10px 0 10px"><i class="fas fa-bus fa-2x"></i></span>' +
+            '<span class="nav_icon" id="drive" style="margin: 0 10px 0 10px"><i class="fas fa-car fa-2x"></i></span><br>' +
+            '</div>';
         tracksInfoWindow.setContent(contentString);
         tracksInfoWindow.setPosition(event.latLng);
         tracksInfoWindow.setOptions({pixelOffset: new google.maps.Size(0,-10)});
         tracksInfoWindow.open(map);
     });
 
-    tracksLayer.addListener("mousemove", function(event) {
-        tracksInfoWindow.setPosition(event.latLng);
-        tracksInfoWindow.setOptions({pixelOffset: new google.maps.Size(0,-10)});
+    tracksInfoWindow.addListener('domready', function() {
+        $("#walk").on("click", function() {
+            tracksInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tracksInfoWindow.getPosition(), google.maps.TravelMode.WALKING);
+            result.style.display = 'block';
+        })
+        $("#transit").on("click", function(){
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tracksInfoWindow.getPosition(), google.maps.TravelMode.TRANSIT);
+            result.style.display = 'block';
+        });
+        $("#drive").on("click", function(){
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tracksInfoWindow.getPosition(), google.maps.TravelMode.DRIVING);
+            result.style.display = 'block';
+        });
     })
-
-    tracksLayer.addListener("mouseout", function() {
-        tracksLayer.setStyle({strokeWeight: 5, strokeColor: "#e08600"});
-        tracksInfoWindow.close();
-    })
-
 
     tracksLayer.setMap(map);
 
@@ -226,11 +266,17 @@ function addSites(file) {
         icon: icon
     });
 
-    let sitesInfoWindow = new google.maps.InfoWindow();
+    sitesInfoWindow = new google.maps.InfoWindow();
 
-    sitesLayer.addListener("mouseover", function(event) {
-        let contentString = '<span style="font-weight:bold;color: #0f0c1c">Name: </span><span style="color: #0f0c1c">' + event.feature.getProperty("NAME") + '</span><br><br>' +
-        '<span style="font-weight:bold;color: #0f0c1c">Access Instruction: </span><p style="color: #0f0c1c;text-align: justify;">' + event.feature.getProperty("ACCESS_DSC") + '</p>';
+    sitesLayer.addListener("click", function(event) {
+        let contentString =
+            '<div>' +
+            '<span style="font-weight:bold;color: #0f0c1c">Name: </span><span style="color: #0f0c1c">' + event.feature.getProperty("NAME") + '</span><br><br>' +
+            '<span style="font-weight:bold;color: #0f0c1c">Choose your prefered way to get here: </span><br><br>' +
+            '<span class="nav_icon" id="walk" style="margin: 0 10px 0 10px"><i class="fas fa-walking fa-2x"></i></span>' +
+            '<span class="nav_icon" id="transit" style="margin: 0 10px 0 10px"><i class="fas fa-bus fa-2x"></i></span>' +
+            '<span class="nav_icon" id="drive" style="margin: 0 10px 0 10px"><i class="fas fa-car fa-2x"></i></span><br>' +
+            '</div>';
         sitesInfoWindow.setContent(contentString);
         sitesInfoWindow.setPosition(event.latLng);
         sitesInfoWindow.setOptions({
@@ -239,9 +285,34 @@ function addSites(file) {
         });
         sitesInfoWindow.open(map);
     });
-    sitesLayer.addListener("mouseout", function(event) {
-        sitesInfoWindow.close();
-    });
+
+    sitesInfoWindow.addListener('domready', function() {
+        $("#walk").on("click", function() {
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), sitesInfoWindow.getPosition(), google.maps.TravelMode.WALKING);
+            result.style.display = 'block';
+        })
+        $("#transit").on("click", function(){
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), sitesInfoWindow.getPosition(), google.maps.TravelMode.TRANSIT);
+            result.style.display = 'block';
+        });
+        $("#drive").on("click", function(){
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), sitesInfoWindow.getPosition(), google.maps.TravelMode.DRIVING);
+            result.style.display = 'block';
+        });
+    })
+
     sitesLayer.setMap(map);
 }
 
@@ -468,6 +539,7 @@ function getRealtimeLocation(){
         userLocation.setPosition(new google.maps.LatLng(lat,lon));
         userLocation.setIcon(icon);
         userLocation.setMap(map);
+        map.setZoom(15);
     });
 }
 

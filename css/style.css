@@ -890,7 +890,7 @@ input{
 maps
 ***************************************/
 #map {
-	height: 700px;
+	height: 900px;
 	width: 100%;
 	margin: 0 auto;
 }
@@ -909,6 +909,18 @@ maps
 	padding: 10px;
 	margin: 10px;
 	border: 3px solid #000;
+}
+
+#nav_result{
+	padding: 10px;
+	margin-top:0;
+	margin-left: 10px;
+	width:300px;
+	height: 400px;
+	overflow-y: scroll;
+	background-color: #fafafa;
+	box-shadow: 0 2px 6px rgba(0,0,0,.3);
+	display: none;
 }
 
 #legend span{
