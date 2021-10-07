@@ -38,6 +38,7 @@ function initMap() {
     const tracksControlDiv = document.createElement("div");
     const sitesControlDiv = document.createElement("div");
     const addressInputDiv = document.createElement("div");
+    addressInputDiv.style.width = "50%";
     addAddressInputControl(addressInputDiv);
     markersControl(markersControlDiv);
     tracksControl(tracksControlDiv);
@@ -458,7 +459,7 @@ function addNavPanel(container){
 function addAddressInputControl(container) {
     var addressUI = document.createElement("div");
     addressUI.setAttribute("id", "add_input_form");
-    addressUI.style.width = "400px";
+    // addressUI.style.width = "50%";
     addressUI.style.height = "40px";
     addressUI.style.marginTop = "-40px";
     addressUI.style.marginLeft = "10px";
