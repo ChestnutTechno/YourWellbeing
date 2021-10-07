@@ -9,7 +9,7 @@
   <meta name="keywords" content="free website templates, free bootstrap themes, free template, free bootstrap, free website template">
 
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
-  <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/76a37389f2.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   <link rel="stylesheet" type="text/css" href="js/jquery-ui-1.12.1.custom/jquery-ui.min.css">
@@ -145,7 +145,18 @@
       Find the recreation activities in Australia
     </p>
     <div class="row">
-        <div id="map"></div>
+      <div class="col-md-2"></div>
+      <div class="col-md-5">
+        <div id="map" class="card" style="border: 1px solid #0f0c1c;"></div>
+        <div id="legend"><h3>Legend</h3></div>
+      </div>
+      <div class="col-md-3">
+        <div class="card"style="margin-top:0;height: 700px; overflow-y: scroll;border: 1px solid #0f0c1c;">
+          <h4>Navigation result</h4>
+          <div id="panel"></div>
+        </div>
+      </div>
+      <div class="col-md-2"></div>
     </div>
   </div>
 
@@ -221,7 +232,7 @@
 <script src="js/custom.js"></script>
 <script src="https://cdn.bootcss.com/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
 <script src="js/interactiveMap.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoZMuCqbKD-xyGxWT2Tl5p1Tq_1cXuDJs&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoZMuCqbKD-xyGxWT2Tl5p1Tq_1cXuDJs&libraries=places,directions&callback=initMap"></script>
 <script src="js/echarts.js"></script>
 <script type="text/javascript">
   var myChart1 = echarts.init(document.getElementById('echart1'));
