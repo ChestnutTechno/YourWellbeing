@@ -554,9 +554,6 @@ function calculateAndDisplayRoute(service, renderer, origin, destination, travel
         .then((response) => {
             renderer.setDirections(response);
 
-            const route = response.routes[0];
-            const summaryPanel = document.getElementById("directions-panel");
-
         })
         .catch((e) => window.alert("Directions request failed due to " + e));
 }
