@@ -125,6 +125,45 @@
             </div>
         </div>
         <hr/>
+
+        <div id="ma" class="row">
+            <div align="center">
+                <h1 class="ser-title" style="font-size: 40px">Making appointments</h1>
+                <h5 style="color: #999999">How to get in touch with a GP?</h5>
+                <hr class="botm-line">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div class="col-md-10">
+                <div class="row">
+                    <center><h3>Hospital map</h3></center>
+                    <input id="address" class="card" style="padding: 0 0 0 10px;margin-left:0;height: 40px;width: 80%;color:#0f0c1c;"type="text" placeholder="Address">
+                    <span onclick="getRealtimeLocation()" style="margin-left: -50px;margin-right: 30px"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
+                    <button id="sub_add" class="submit_btn" onclick="getAddress()" style="width: 115px">Search</button>
+                    <div id="hospital_map"></div>
+                </div>
+                <br><br>
+                <center><h3>Online appointment booking platform</h3></center>
+                <br>
+                <div class="row">
+                    <div class="col-md-6" align="center">
+                        <div id = "hot_doc" style="width: 600px; height: 160px;" class="card text-center" onclick="window.open('https://www.hotdoc.com.au','_blank')">
+                            <br><br><br>
+                        </div>
+                    </div>
+                    <div class="col-md-6" align="center">
+                        <div id="healthEngine" style="width: 600px;height: 160px" class="card text-center" onclick="window.open('https://healthengine.com.au/','_blank')">
+                            <br><br><br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1"></div>
+        </div>
+        <hr/>
+        <br> <br> <br> <br>
+
         <div id="cb" class="row">
             <div align="center">
                 <h1 class="ser-title" style="font-size: 40px">Claiming & Billing</h1>
@@ -143,69 +182,77 @@
                         Cover (OSHC), according to <a href="https://www.privatehealth.gov.au/health_insurance/overseas/overseas_student_health_cover.htm", target="_blank">
                         Australia Department of Health</a>. Table below will summarise the claiming and billing process of each OSHC providers.
                     </p>
-                    <div style="overflow-x: scroll;">
-                        <table class="table">
-                            <tr>
-                                <th>OSCH providers</th>
-                                <td>&nbsp;&nbsp;<img src="img/insurance/ahm.png"> </td>
-                                <td><br><img src="img/insurance/allianz.png"></td>
-                                <td><img src="img/insurance/bupa.png"> </td>
-                                <td><img src="img/insurance/cbhs.png"> </td>
-                                <td><br><img src="img/insurance/medibank.png"> </td>
-                                <td><br><img src="img/insurance/nib.png"> </td>
-                            </tr>
-                            <tr>
-                                <th>Website</th>
-                                <td><a style="font-size: 14px" href="https://www.ahmoshc.com.au" target="_blank">https://www.ahmoshc.com.au</a></td>
-                                <td><a style="font-size: 14px" href="https://www.allianzcare.com.au/en/student-visa-oshc.html" target="_blank">https://www.allianzcare.com.au/en/student-visa-oshc.html</a></td>
-                                <td><a style="font-size: 14px" href="https://www.bupa.com.au/health-insurance/oshc" target="_blank">https://www.bupa.com.au/health-insurance/oshc</a></td>
-                                <td><a style="font-size: 14px" href="https://www.cbhsinternationalhealth.com.au/overseas-students-oshc" target="_blank">https://www.cbhsinternationalhealth.com.au/overseas-students-oshc</a></td>
-                                <td><a style="font-size: 14px" href="https://www.medibank.com.au" target="_blank">https://www.medibank.com.au</a></td>
-                                <td><a style="font-size: 14px" href="https://www.nib.com.au" target="_blank">https://www.nib.com.au</a></td>
-                            </tr>
-                            <tr>
-                                <th>How to Claiming</th>
-                                <td>
-                                    <p>• Log in to <a href="https://www.ahmoshc.com.au/login/" target="_blank">Online Member Services</a></p>
-                                    <p>• Provide details about the claim</p>
-                                    <p>• Scan and upload receipts</p>
-                                    <p>• Ensure the Australian bank account provided is correct</p>
-                                    <p><a href="https://www.ahmoshc.com.au/how-to-make-an-online-claim/" target="_blank">More...</a></p>
-                                </td>
-                                <td>
-                                    <p>• Download and login to MyHealth app on <a href="https://apps.apple.com/us/app/allianz-myhealth/id883138957" target="_blank">iOS</a>
-                                        or <a href="https://play.google.com/store/apps/details?id=com.allianzworldwidecare.mobile" target="_blank">Android</a></p>
-                                    <p>• Select ‘Submit claim’.</p>
-                                    <p>• Upload photos of invoices and receipts.</p>
-                                    <p><a href="https://www.allianzcare.com.au/en/student-visa-oshc/how-make-claim-oshc.html" target="_blank">More...</a></p>
-                                </td>
-                                <td>
-                                    <p>• <a href="https://my.bupa.com.au/register" target="_blank">Sign up</a> or <a href="https://my.bupa.com.au/login">login</a> to myBupa</a></p>
-                                    <p>• Select "Make a claim".</p>
-                                    <p>• Upload photos of invoices and receipts.</p>
-                                    <p>• Upload a copy of a completed <a href="https://www.bupa.com.au/health-insurance/oshc/-/media/OSHC/Files/understand-cover/bupa-medical-certificate.pdf?la=en&hash=62C662D3E81EA67441E6F8DBEF9078D676750246" target="_blank">medical certificate</a> if you are in the first 12 months of your cover</p>
-                                    <p><a href="https://www.bupa.com.au/health-insurance/oshc/members-help-guide/make-a-claim" target="_blank">More...</a></p>
-                                </td>
-                                <td>
-                                    <p>• Take a photo of your membership card</p>
-                                    <p>• Forward a copy or a photo of your invoice and receipt from the provider.</p>
-                                    <p>• Send to <a href="mailto:internationalclaims@cbhscorp.com.au">internationalclaims@cbhscorp.com.au</a></p>
-                                    <p><a href="https://www.cbhsinternationalhealth.com.au/existing-members/how-to-claim" target="_blank">More...</a></p>
-                                </td>
-                                <td>
-                                    <p>• Signup or login to <a href="https://members.medibank.com.au/" target="_blank">My Medibank website</a> or using My Medibank App (<a href="https://play.google.com/store/apps/details?id=au.com.medibank.phs&hl=en" target="_blank">Android</a> / <a href="https://itunes.apple.com/au/app/medibank-mobile/id465576269?mt=8" target="_blank">iOS</a>)</p>
-                                    <p>• Select 'Make a claim'.</p>
-                                    <p>• Follow the instruction to submit the claim.</p>
-                                    <p><a href="https://www.medibank.com.au/health-insurance/using-your-cover/claim/" target="_blank">More...</a></p>
-                                </td>
-                                <td>
-                                    <p>• Signup or login to nib app (<a target="_blank" href="https://play.google.com/store/apps/details?id=au.com.nib&hl=en_AU">Android</a> / <a target="_blank" href="https://apps.apple.com/au/app/nib-health-insurance/id373883175">iOS</a>) or <a target="_blank" href="https://www.nib.com.au/login">online</a></p>
-                                    <p>• Take a photo of medical receipts and submit them online</p>
-                                    <p><a href="https://www.nib.com.au/health-information/extras/how-to-make-a-claim" target="_blank">More...</a></p>
-                                </td>
-                            </tr>
-                        </table>
+                    <br><br>
+                    <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-8">
+                            <div style="overflow-x: scroll;">
+                                <table class="table">
+                                    <tr>
+                                        <th>OSCH providers</th>
+                                        <td>&nbsp;&nbsp;<img src="img/insurance/ahm.png"> </td>
+                                        <td><br><img src="img/insurance/allianz.png"></td>
+                                        <td><img src="img/insurance/bupa.png"> </td>
+                                        <td><img src="img/insurance/cbhs.png"> </td>
+                                        <td><br><img src="img/insurance/medibank.png"> </td>
+                                        <td><br><img src="img/insurance/nib.png"> </td>
+                                    </tr>
+                                    <tr>
+                                        <th>Website</th>
+                                        <td><a style="font-size: 14px" href="https://www.ahmoshc.com.au" target="_blank">https://www.ahmoshc.com.au</a></td>
+                                        <td><a style="font-size: 14px" href="https://www.allianzcare.com.au/en/student-visa-oshc.html" target="_blank">https://www.allianzcare.com.au/en/student-visa-oshc.html</a></td>
+                                        <td><a style="font-size: 14px" href="https://www.bupa.com.au/health-insurance/oshc" target="_blank">https://www.bupa.com.au/health-insurance/oshc</a></td>
+                                        <td><a style="font-size: 14px" href="https://www.cbhsinternationalhealth.com.au/overseas-students-oshc" target="_blank">https://www.cbhsinternationalhealth.com.au/overseas-students-oshc</a></td>
+                                        <td><a style="font-size: 14px" href="https://www.medibank.com.au" target="_blank">https://www.medibank.com.au</a></td>
+                                        <td><a style="font-size: 14px" href="https://www.nib.com.au" target="_blank">https://www.nib.com.au</a></td>
+                                    </tr>
+                                    <tr>
+                                        <th>How to Claiming</th>
+                                        <td>
+                                            <p>• Log in to <a href="https://www.ahmoshc.com.au/login/" target="_blank">Online Member Services</a></p>
+                                            <p>• Provide details about the claim</p>
+                                            <p>• Scan and upload receipts</p>
+                                            <p>• Ensure the Australian bank account provided is correct</p>
+                                            <p><a href="https://www.ahmoshc.com.au/how-to-make-an-online-claim/" target="_blank">More...</a></p>
+                                        </td>
+                                        <td>
+                                            <p>• Download and login to MyHealth app on <a href="https://apps.apple.com/us/app/allianz-myhealth/id883138957" target="_blank">iOS</a>
+                                                or <a href="https://play.google.com/store/apps/details?id=com.allianzworldwidecare.mobile" target="_blank">Android</a></p>
+                                            <p>• Select ‘Submit claim’.</p>
+                                            <p>• Upload photos of invoices and receipts.</p>
+                                            <p><a href="https://www.allianzcare.com.au/en/student-visa-oshc/how-make-claim-oshc.html" target="_blank">More...</a></p>
+                                        </td>
+                                        <td>
+                                            <p>• <a href="https://my.bupa.com.au/register" target="_blank">Sign up</a> or <a href="https://my.bupa.com.au/login">login</a> to myBupa</a></p>
+                                            <p>• Select "Make a claim".</p>
+                                            <p>• Upload photos of invoices and receipts.</p>
+                                            <p>• Upload a copy of a completed <a href="https://www.bupa.com.au/health-insurance/oshc/-/media/OSHC/Files/understand-cover/bupa-medical-certificate.pdf?la=en&hash=62C662D3E81EA67441E6F8DBEF9078D676750246" target="_blank">medical certificate</a> if you are in the first 12 months of your cover</p>
+                                            <p><a href="https://www.bupa.com.au/health-insurance/oshc/members-help-guide/make-a-claim" target="_blank">More...</a></p>
+                                        </td>
+                                        <td>
+                                            <p>• Take a photo of your membership card</p>
+                                            <p>• Forward a copy or a photo of your invoice and receipt from the provider.</p>
+                                            <p>• Send to <a href="mailto:internationalclaims@cbhscorp.com.au">internationalclaims@cbhscorp.com.au</a></p>
+                                            <p><a href="https://www.cbhsinternationalhealth.com.au/existing-members/how-to-claim" target="_blank">More...</a></p>
+                                        </td>
+                                        <td>
+                                            <p>• Signup or login to <a href="https://members.medibank.com.au/" target="_blank">My Medibank website</a> or using My Medibank App (<a href="https://play.google.com/store/apps/details?id=au.com.medibank.phs&hl=en" target="_blank">Android</a> / <a href="https://itunes.apple.com/au/app/medibank-mobile/id465576269?mt=8" target="_blank">iOS</a>)</p>
+                                            <p>• Select 'Make a claim'.</p>
+                                            <p>• Follow the instruction to submit the claim.</p>
+                                            <p><a href="https://www.medibank.com.au/health-insurance/using-your-cover/claim/" target="_blank">More...</a></p>
+                                        </td>
+                                        <td>
+                                            <p>• Signup or login to nib app (<a target="_blank" href="https://play.google.com/store/apps/details?id=au.com.nib&hl=en_AU">Android</a> / <a target="_blank" href="https://apps.apple.com/au/app/nib-health-insurance/id373883175">iOS</a>) or <a target="_blank" href="https://www.nib.com.au/login">online</a></p>
+                                            <p>• Take a photo of medical receipts and submit them online</p>
+                                            <p><a href="https://www.nib.com.au/health-information/extras/how-to-make-a-claim" target="_blank">More...</a></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                        </div>
+                        <div class="col-md-2"></div>
                     </div>
+
                 </div>
             </div>
             <div class="col-sm-1">
@@ -214,40 +261,8 @@
                 </div>
             </div>
         </div>
-        <hr/>
-        <div id="ma" class="row">
-            <div align="center">
-                <h1 class="ser-title" style="font-size: 40px">Making appointments</h1>
-                <h5 style="color: #999999">How to get in touch with a GP?</h5>
-                <hr class="botm-line">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-sm-4">
-                <center><h3>Online appointment booking platform</h3></center>
-                <div class="row">
-
-                    <div id = "hot_doc" style="width: 600px; height: 160px;" class="card text-center" onclick="window.open('https://www.hotdoc.com.au','_blank')">
-                        <br><br><br>
-                    </div>
-                    <div id="healthEngine" style="width: 600px;height: 160px" class="card text-center" onclick="window.open('https://healthengine.com.au/','_blank')">
-                        <br><br><br>
-                    </div>
-                </div>
-            </div><div class="col-md-1"></div>
-
-            <div class="col-sm-5">
-                <center><h3>Hospital map</h3></center>
-                <input id="address" class="card" style="padding: 0 0 0 10px;margin-left:0;height: 40px;width: 80%;color:#0f0c1c;"type="text" placeholder="Address">
-                <span onclick="getRealtimeLocation()" style="margin-left: -50px;margin-right: 30px"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                <button id="sub_add" class="submit_btn" onclick="getAddress()" style="width: 115px">Search</button>
-                <div id="hospital_map"></div>
-            </div>
 
 
-
-        </div>
     </div>
 
 </section>
