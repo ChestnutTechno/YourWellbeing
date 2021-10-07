@@ -138,25 +138,31 @@
             <div class="col-md-10">
                 <div class="row">
                     <center><h3>Hospital map</h3></center>
-                    <input id="address" class="card" style="padding: 0 0 0 10px;margin-left:0;height: 40px;width: 80%;color:#0f0c1c;"type="text" placeholder="Address">
-                    <span onclick="getRealtimeLocation()" style="margin-left: -50px;margin-right: 30px"><i class="fa fa-location-arrow" aria-hidden="true"></i></span>
-                    <button id="sub_add" class="submit_btn" onclick="getAddress()" style="width: 115px">Search</button>
-                    <div id="hospital_map"></div>
+                    <div class="col-md-1"></div>
+                    <div class="col-md-10">
+                        <div id="hospital_map"></div>
+
+                    </div>
+                    <div class="col-md-1"></div>
                 </div>
                 <br><br>
                 <center><h3>Online appointment booking platform</h3></center>
                 <br>
                 <div class="row">
-                    <div class="col-md-6" align="center">
+                    <div class="col-md-1"></div>
+
+                    <div class="col-md-5" align="center">
                         <div id = "hot_doc" style="width: 600px; height: 160px;" class="card text-center" onclick="window.open('https://www.hotdoc.com.au','_blank')">
                             <br><br><br>
                         </div>
                     </div>
-                    <div class="col-md-6" align="center">
+                    <div class="col-md-5" align="center">
                         <div id="healthEngine" style="width: 600px;height: 160px" class="card text-center" onclick="window.open('https://healthengine.com.au/','_blank')">
                             <br><br><br>
                         </div>
                     </div>
+                    <div class="col-md-1"></div>
+
                 </div>
             </div>
             <div class="col-md-1"></div>
@@ -290,7 +296,7 @@
 <script src="js/hospitalMap.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.3.0/raphael.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowchart/1.15.0/flowchart.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoZMuCqbKD-xyGxWT2Tl5p1Tq_1cXuDJs&callback=initMap"></script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoZMuCqbKD-xyGxWT2Tl5p1Tq_1cXuDJs&libraries=places&callback=initMap"></script>
 </body>
 
 </html>
