@@ -96,29 +96,34 @@
       </div>
       <br><br>
       <p style="font-family: Raleway;line-height: 2;" >
-        <br>A review of current literature indicates that people who participate in sports clubs and organised recreational activity enjoy better mental health, are more alert, and more resilient against the stresses of modern living. Participation in recreational groups and socially supported physical activity is shown to reduce stress, anxiety and depression, and reduce symptoms of Alzheimer’s disease. Violent crime also decreases significantly when participation in community activities increases.1 More people undertake voluntary work for sports and physical recreation organisations in Australia (1.1 million) to support participation in sport and recreation activity, than are employed in the industry (83,008).2 Links between obesity, depression and physical inactivity are also briefly examined.
+        <br>A review of current literature indicates that people who participate in sports clubs and organised recreational activity enjoy better mental health, are more alert, and more resilient against the stresses of modern living.
       </p>
+      <ul>
+        <li><p style="font-family: Raleway;line-height: 2;" >Participation in recreational groups and socially supported physical activity is shown to reduce stress, anxiety and depression, and reduce symptoms of Alzheimer’s disease.</p></li>
+        <li><p style="font-family: Raleway;line-height: 2;" >Violent crime also decreases significantly when participation in community activities increases.</p></li>
+      </ul>
 
       <div class="row">
         <br><br><br>
-        <div class="col-md-8">
+        <div class="col-md-12" align="center">
           <br><br><br>
-          <img src="img/beingPhysically.png">
+          <img src="img/beingPhysically.png" style="width: 1301px; height: 369px">
         </div>
-        <div class="col-md-4">
-          <p style="font-family: Raleway;line-height: 2;">
-            <br><br>
-            <br><br>
-            People who participate in sports clubs and organised recreational activity enjoy better mental health.
-          </p></div>
+
       </div>
       <br><br><br>
       <br><br><br>
       <div class="row">
         <div class="col-lg-8" align="center"><div id="echart1" style="width: 800px;height:800px;"></div></div>
         <div class="col-lg-4" ><p style="font-family: Raleway;line-height: 2;">
-          <br><br><br><br><br><br>
-          Participation in sport and recreation activities can reduce stress, anxiety and depression.3 Participation in group recreation provides a sense of value, belonging and attachment.4 According to Bandura’s social cognitive theory, behaviour is shaped by the interaction between individual and environmental factors.5​This theory emphasizes the influence of social interaction in relation to behaviour. There are both direct and indirect links between participation in group activity and mental health.
+          <br><br><br>
+          <ul>
+          <li><p style="font-family: Raleway;line-height: 2;">Participation in sport and recreation activities can reduce stress, anxiety and depression.</p></li>
+          <li><p style="font-family: Raleway;line-height: 2;">Participation in group recreation provides a sense of value, belonging and attachment.</p></li>
+          <li><p style="font-family: Raleway;line-height: 2;">According to Bandura’s social cognitive theory, behaviour is shaped by the interaction between individual and environmental factors.</p></li>
+          <li><p style="font-family: Raleway;line-height: 2;">This theory emphasizes the influence of social interaction in relation to behaviour.</p></li>
+          <li><p style="font-family: Raleway;line-height: 2;">There are both direct and indirect links between participation in group activity and mental health.</p></li>
+        </ul>
         </p>
         </div>
       </div>
@@ -230,8 +235,8 @@
     },
     visualMap: {
       show: false,
-      min: 0,
-      max: 30,
+      min: 30,
+      max: 300,
       inRange: {
         colorLightness: [0, 1]
       }
@@ -256,7 +261,51 @@
         }),
         roseType: 'radius',
         label: {
-          color: 'rgba(0,0,0,0.3)'
+          color: 'rgba(0,0,0,0.3)',
+          fontSize: 20,
+        },
+        labelLine: {
+          lineStyle: {
+            color: 'rgba(0,0,0,0.3)'
+          },
+          smooth: 0.2,
+          length: 10,
+          length2: 20
+        },
+        itemStyle: {
+          color: '#e28583',
+          shadowBlur: 200,
+          shadowColor: 'rgba(0, 0, 0, 0.5)'
+        },
+        animationType: 'scale',
+        animationEasing: 'elasticOut',
+        animationDelay: function (idx) {
+          return Math.random() * 200;
+        }
+      },
+      {
+        name: 'Access From',
+        type: 'pie',
+        radius: '55%',
+        center: ['50%', '50%'],
+        data: [
+          {value: 170, name: 'Walking'},
+          {value: 240, name: 'Swimming'},
+          {value: 140, name: 'Meditation'},
+          {value: 130, name: 'Reading'},
+          {value: 80, name: 'Rlaying games'},
+          {value: 100, name: 'Dncing'},
+          {value: 160, name: 'Other recreation and leisure'},
+
+        ].sort(function (a, b) {
+          return a.value - b.value;
+        }),
+        roseType: 'radius',
+        label: {
+          color: '#7F8FA4',
+          fontSize: 13,
+          position: "inside",
+          formatter: '{d}%'
         },
         labelLine: {
           lineStyle: {
