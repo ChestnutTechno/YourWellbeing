@@ -55,7 +55,9 @@ function initMap() {
 
     // nav result
     result = document.getElementById('nav_result');
-    map.controls[google.maps.ControlPosition.LEFT_CENTER].push(result);
+    result.style.height = "50%";
+    result.style.width = "30%"
+    map.controls[google.maps.ControlPosition.LEFT_TOP].push(result);
 
 
     // add legend
