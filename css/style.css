@@ -393,7 +393,7 @@ header span i {
 
 .slider .item-third {
 	background-image: url(../img/slider2.jpg);
-	background-position:bottom;
+	background-position: top;
 	background-size: cover;
 
 
