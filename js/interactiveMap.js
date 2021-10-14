@@ -6,7 +6,7 @@ let destination;
 let userLocation;
 let directionsService;
 let directionsRenderer;
-let infowindow;
+let infowindow = [];
 let sitesInfoWindow;
 let tracksInfoWindow;
 let result;
@@ -85,12 +85,13 @@ function initMap() {
 
     map.addListener("click", () => {
         result.style.display = 'none';
-        infowindow.close();
+        hideTooltips();
         sitesInfoWindow.close();
         tracksInfoWindow.close();
         directionsRenderer.set('directions', null);
         showMarkers();
         sitesLayer.setMap(map);
+        tracksLayer.setStyle({strokeWeight: 4, strokeColor: "#e08600"});
         tracksLayer.setMap(map);
         destination.setMap(null);
     })
@@ -128,8 +129,7 @@ function addFacilities(file) {
     {
         if(rawFile.readyState === 4)
         {
-            if(rawFile.status === 200 || rawFile.status == 0)
-            {
+            if(rawFile.status === 200 || rawFile.status == 0){
                 var allText = rawFile.responseText;
                 var json = csvToJSON(allText);
                 for (let i = 0; i < json.length; i++) {
@@ -139,17 +139,19 @@ function addFacilities(file) {
                         '<div>' +
                         '<span style="color: #0f0c1c;font-weight: bold">Name: </span> <span style="color: #0f0c1c">' + json[i]['Facility Name'] + '</span><br><br>' +
                         '<span style="color: #0f0c1c;font-weight: bold">Sports: </span> <span style="color: #0f0c1c">' + json[i]['Sports Played'] + '</span><br><br>' +
-                        '<span style="color: #0f0c1c;font-weight: bold">Field/Surface type: </span> <span style="color: #0f0c1c">' + json[i]['Field/Surface Type'] + '</span><br><br>' +
                         '<span style="color: #0f0c1c;font-weight: bold">Address: </span> <span style="color: #0f0c1c">' + json[i]['FullAddress'] + '</span><br><hr style="border: 1px dashed #0f0c1c">' +
                         '<span style="color: #0f0c1c;font-weight: bold">Choose your prefered way to get here: </span><br><br>' +
                         '<span class="nav_icon" id="walk" style="margin: 0 10px 0 10px"><i class="fas fa-walking fa-2x"></i></span>' +
+                        '<span class="nav_icon" id="cycling" style="margin: 0 10px 0 10px"><i class="fas fa-biking fa-2x"></i></span>' +
                         '<span class="nav_icon" id="transit" style="margin: 0 10px 0 10px"><i class="fas fa-bus fa-2x"></i></span>' +
                         '<span class="nav_icon" id="drive" style="margin: 0 10px 0 10px"><i class="fas fa-car fa-2x"></i></span><br>' +
                         '</div>'
 
-                    infowindow = new google.maps.InfoWindow({
+                    let tooltip = new google.maps.InfoWindow({
                         content: contentString,
                     });
+
+                    infowindow.push(tooltip);
 
                     let marker = new google.maps.Marker({
                         position: latLng,
@@ -160,38 +162,48 @@ function addFacilities(file) {
                     markers.push(marker);
 
                     marker.addListener("click", () => {
-                        infowindow.open({
+                        tooltip.open({
                             anchor: marker,
                             map,
                             shouldFocus: false,
                         });
                     })
 
-                    infowindow.addListener('domready', function() {
+                    tooltip.addListener('domready', function() {
                         $("#walk").on("click", function() {
-                            infowindow.close();
+                            tooltip.close();
                             hideMarkers();
                             sitesLayer.setMap(null);
                             tracksLayer.setMap(null);
-                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), infowindow.getPosition(), google.maps.TravelMode.WALKING);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tooltip.getPosition(), google.maps.TravelMode.WALKING);
+                            result.style.display = 'block';
+                        });
+
+                        $("#cycling").on('click', function() {
+                            tooltip.close();
+                            hideMarkers();
+                            sitesLayer.setMap(null);
+                            tracksLayer.setMap(null);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tooltip.getPosition(), google.maps.TravelMode.BICYCLING);
                             result.style.display = 'block';
                         })
+
                         $("#transit").on("click", function(){
-                            infowindow.close();
+                            tooltip.close();
                             hideMarkers();
                             sitesLayer.setMap(null);
                             tracksLayer.setMap(null);
-                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), infowindow.getPosition(), google.maps.TravelMode.TRANSIT);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tooltip.getPosition(), google.maps.TravelMode.TRANSIT);
                             result.style.display = 'block';
                         });
-                        $("#drive").on("click", function(){
-                            infowindow.close();
+                        $('#drive').on('click', function() {
+                            tooltip.close();
                             hideMarkers();
                             sitesLayer.setMap(null);
                             tracksLayer.setMap(null);
-                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), infowindow.getPosition(), google.maps.TravelMode.DRIVING);
+                            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tooltip.getPosition(), google.maps.TravelMode.DRIVING);
                             result.style.display = 'block';
-                        });
+                        })
                     })
                 }
             }
@@ -218,6 +230,7 @@ function addTracks(file) {
             '<span style="font-weight:bold;color: #0f0c1c">Track Name: </span><span style="color: #0f0c1c">' + event.feature.getProperty("NAME") + '</span><br><br>' +
             '<span style="font-weight:bold;color: #0f0c1c">Choose your prefered way to get here: </span><br><br>' +
             '<span class="nav_icon" id="walk" style="margin: 0 10px 0 10px"><i class="fas fa-walking fa-2x"></i></span>' +
+            '<span class="nav_icon" id="cycling" style="margin: 0 10px 0 10px"><i class="fas fa-biking fa-2x"></i></span>' +
             '<span class="nav_icon" id="transit" style="margin: 0 10px 0 10px"><i class="fas fa-bus fa-2x"></i></span>' +
             '<span class="nav_icon" id="drive" style="margin: 0 10px 0 10px"><i class="fas fa-car fa-2x"></i></span><br>' +
             '</div>';
@@ -242,6 +255,14 @@ function addTracks(file) {
             sitesLayer.setMap(null);
             tracksLayer.setMap(null);
             calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tracksInfoWindow.getPosition(), google.maps.TravelMode.TRANSIT);
+            result.style.display = 'block';
+        });
+        $("#cycling").on("click", function(){
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), tracksInfoWindow.getPosition(), google.maps.TravelMode.BICYCLING);
             result.style.display = 'block';
         });
         $("#drive").on("click", function(){
@@ -277,6 +298,7 @@ function addSites(file) {
             '<span style="font-weight:bold;color: #0f0c1c">Name: </span><span style="color: #0f0c1c">' + event.feature.getProperty("NAME") + '</span><br><br>' +
             '<span style="font-weight:bold;color: #0f0c1c">Choose your prefered way to get here: </span><br><br>' +
             '<span class="nav_icon" id="walk" style="margin: 0 10px 0 10px"><i class="fas fa-walking fa-2x"></i></span>' +
+            '<span class="nav_icon" id="cycling" style="margin: 0 10px 0 10px"><i class="fas fa-biking fa-2x"></i></span>' +
             '<span class="nav_icon" id="transit" style="margin: 0 10px 0 10px"><i class="fas fa-bus fa-2x"></i></span>' +
             '<span class="nav_icon" id="drive" style="margin: 0 10px 0 10px"><i class="fas fa-car fa-2x"></i></span><br>' +
             '</div>';
@@ -296,6 +318,14 @@ function addSites(file) {
             sitesLayer.setMap(null);
             tracksLayer.setMap(null);
             calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), sitesInfoWindow.getPosition(), google.maps.TravelMode.WALKING);
+            result.style.display = 'block';
+        })
+        $("#cycling").on("click", function() {
+            sitesInfoWindow.close();
+            hideMarkers();
+            sitesLayer.setMap(null);
+            tracksLayer.setMap(null);
+            calculateAndDisplayRoute(directionsService, directionsRenderer, userLocation.getPosition(), sitesInfoWindow.getPosition(), google.maps.TravelMode.BICYCLING);
             result.style.display = 'block';
         })
         $("#transit").on("click", function(){
@@ -493,9 +523,9 @@ function addAddressInputControl(container) {
     const options = {
         bounds: defaultBounds,
         componentRestrictions: { country: "au" },
-        fields: ["address_components"],
+        fields: ["address_component", "geometry", "name"],
         strictBounds: false,
-        types: ["address"],
+        types: [],
     };
     let autoComplete = new google.maps.places.Autocomplete(inputBox, options);
 
@@ -589,6 +619,12 @@ function hideSites() {
 
 function showSites() {
     sitesLayer.setMap(map);
+}
+
+function hideTooltips() {
+    for (let i = 0; i < infowindow.length; i++) {
+        infowindow[i].close();
+    }
 }
 
 

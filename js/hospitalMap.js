@@ -1,6 +1,7 @@
 let hospitalMap;
 let userLocation;
 let icon;
+let result;
 
 function initMap() {
     hospitalMap = new google.maps.Map(document.getElementById("hospital_map"), {
@@ -72,6 +73,19 @@ function addHospitals(file) {
 
                     marker.addListener("mouseout", () => {
                         hospitalInfowindow.close();
+                    });
+
+                    marker.addListener("click", () => {
+                        // var request = {
+                        //     location: latLng,
+                        //     type: "hospital",
+                        //     radius: 100
+                        // };
+                        // placeService.search(request, (response, status) => {
+                        //     if(status == google.maps.places.PlacesServiceStatus.OK){
+                        //         var detailRequest =
+                        //     }
+                        // })
                     });
                 }
             }
@@ -176,9 +190,9 @@ function addAddressInputControl(container) {
     const options = {
         bounds: defaultBounds,
         componentRestrictions: { country: "au" },
-        fields: ["address_components"],
+        fields: ["address_component", "geometry", "name"],
         strictBounds: false,
-        types: ["address"],
+        types: [],
     };
     let autoComplete = new google.maps.places.Autocomplete(inputBox, options);
 
